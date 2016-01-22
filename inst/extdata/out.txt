@@ -1,0 +1,4 @@
+NAME_CN,CODE_SEARCHING,STAND_LATIN_NAME,GENUS,KEW_GENUS,KEW_FAMILY,TPL_FAMILY,TPL_ORDER
+›≈∆—,Acorus calamus,Acorus calamus L.,Acorus,Acorus,Acoraceae,Acoraceae,Acorales
+›≈∆— Ù,Acorus,Acorus,Acorus,Acorus,Acoraceae,Acoraceae,Acorales
+›≈∆—
