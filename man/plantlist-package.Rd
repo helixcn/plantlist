@@ -3,17 +3,17 @@
 \alias{plantlist}
 \docType{package}
 \title{
-Looking up Plant Families based on APGIII Classification System and More
+Looking Up the Status of Plant Scientific Names based on The Plant List Database
 }
 \description{
-Looking up Higher Plant Families based on APGIII Classification System, and making taxa table for Phylomatic Software for building large phylogenies without DNA sequences. 
+Looking up the status of scientific names based on the Plant List Database and search the Families for genus. 
 }
 \details{
 \tabular{ll}{
 Package: \tab plantlist\cr
 Type: \tab Package\cr
-Version: \tab 0.2.2\cr
-Date: \tab 2016-1-22\cr
+Version: \tab 0.2.3\cr
+Date: \tab 2016-1-24\cr
 License: \tab GLP-2\cr
 LazyLoad: \tab yes\cr
 }
