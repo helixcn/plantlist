@@ -1,18 +1,18 @@
 ## Welcome to the Homepage of plantlist
 
-plantlist is an R package for checking the status of a scientific name for higher plants. Its database was based on The Plant List Website. 
+plantlist is an R package for checking the status of a scientific name for higher plants. Its database is based on The Plant List Website (Ver. 1.1). 
 
 ### How to install?
 
 ```R
 library(devtools)
-install_github("helixcn/plantlist")`
+install_github("helixcn/plantlist")
 ```
 
 If you haven't had devtools installed, please install it by typing 
 
 ```R
-install.packages("devtools")"
+install.packages("devtools")
 ```
 
 in R console.
@@ -39,7 +39,7 @@ status("Hypoxis erecta var. aestivalis")
 
 status("Hypoxis hirsuta f. villosissima")
 
-### Important Warning: Because 'f.' is also used in the authorship, 
+### Important Warning: Since 'f.' is also used in the authorship, 
 ### please do not provide the author name for the species when 
 ### it is a form. Eg. 
 ### "Hypoxis hirsuta (L.) Coville f. vollosissima Fernald". 
@@ -62,6 +62,6 @@ res <- TPL(sp)
 taxa.table(res)
 ```
 
-### For detailed help, please look at the manual for each function. 
+For more help, please look at the manual for each function. 
 
 Please feel free to send an email to the package maintainer **Dr. Jinlong Zhang** if you have any question or comments about this package.
