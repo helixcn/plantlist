@@ -1,7 +1,3 @@
-### if(getRversion() >= "2.15.1")  utils::globalVariables(c("acc_dat", "syn_dat"))
-##assign("acc_dat", acc_dat, envir = .GlobalEnv)
-##assign("syn_dat", syn_dat, envir = .GlobalEnv)
-
 status <- function (species = NA, exact = TRUE, spell_error_max = NULL){
 parse_taxa <- function(taxa){
     parse_taxon <- function(taxon){
