@@ -50,7 +50,7 @@ The embbed database is available at \url{http://pan.baidu.com/s/1hqHrW9I}
 
 }
 \author{
-Jinlong Zhang
+Jinlong Zhang \email{ jinlongzhang01@gmail.com }
 }
 
 \seealso{

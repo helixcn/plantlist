@@ -32,7 +32,7 @@ Taxa table for software Phylomatic.
 Webb, C. O. and M. J. Donoghue (2005). Phylomatic: tree assembly for applied phylogenetics. Molecular Ecology Notes 5(1): 181-183.
 }
 \author{
-Jinlong Zhang
+Jinlong Zhang \email{ jinlongzhang01@gmail.com }
 }
 
 \seealso{

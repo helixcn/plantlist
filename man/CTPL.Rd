@@ -31,7 +31,7 @@ A file "CTPL_results.csv" will be generated in the working directory.
 The Plant List Website. 
 }
 \author{
-Jinlong Zhang
+Jinlong Zhang \email{ jinlongzhang01@gmail.com }
 }
 \examples{
 # Do not Run

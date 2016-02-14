@@ -120,8 +120,6 @@ splist <- c( "Ranunculus japonicus",
 res <- TPL(splist)
 taxa.table(res)
 
-#### Note you can also search family number
-#### The following families are synonyms, I suggest to use 
 TPL("Arecaceae")
 TPL("Palmae")
 
