@@ -39,10 +39,10 @@ TPL <- function (plant.names = NULL) {
     res1 <- merge(x = genus, y = APGIII_GENERA, by.x = "YOUR_GENUS", 
         by.y = "GENUS", sort = FALSE, all.x = TRUE)
 
-    res <- merge(x = res1, y = APGIII_ORDERS, by = "APGIII_FAMILY", 
+    res <- merge(x = res1, y = APGIII_ORDERS, by.x = "FAMILY",by.y = "APGIII_FAMILY",  
         sort = FALSE, all.x = TRUE)
     
     return(data.frame(YOUR_SEARCH = res$YOUR_SPECIES, POSSIBLE_GENUS = res$YOUR_GENUS, 
-        FAMILY = res$APGIII_FAMILY, ORDER = res$APGIII_ORDER, FAMILY_NUMBER = res$APGIII_NUMBER 
+        FAMILY = res$FAMILY, ORDER = res$APGIII_ORDER, FAMILY_NUMBER = res$APGIII_NUMBER 
         ))
 }
