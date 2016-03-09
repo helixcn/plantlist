@@ -12,8 +12,8 @@ Looking up the status of scientific names based on the Plant List Database and s
 \tabular{ll}{
 Package: \tab plantlist\cr
 Type: \tab Package\cr
-Version: \tab 0.2.3\cr
-Date: \tab 2016-1-24\cr
+Version: \tab 0.2.5\cr
+Date: \tab 2016-3-9\cr
 License: \tab GLP-2\cr
 LazyLoad: \tab yes\cr
 }
