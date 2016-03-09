@@ -22,22 +22,21 @@ Integer, represents the number of spelling errors. Only effective when exact = F
 }
 }
 \details{
-The scientific names will be formatted slightly at the beginning, eg. Change the case of letters; Remove the whitespace at the begining or ending or the string. The scientific name will then be parsed to GENUS, SPECIES, INFRASPECIFIC_RANK, INFRASPECIFIC_EPITHET. Only the these fields will be used for search against the TPL database. Therefore the authorship will not affect the results. INFRASPECIFIC_RANK only kept "var." and "subsp.", and have excluded "f." as "f." is often used in authorships. Please refer to the Plantlist Website for the validity for any "form" of a species. 
+The scientific names will be formatted before being searched, eg. The first letter of the scientific name will be changed to upper case while the rest will be in lower case; multiple whitespaces will be replaced by one, and the white space at the beginning or the end will be removed. The scientific name will then be parsed to GENUS, SPECIES, AUTHOR_OF_SPECIES, INFRASPECIFIC_RANK, INFRASPECIFIC_EPITHET, AUTHOR_OF_INFRASPECIFIC_RANK, respectively. However, only GENUS, SPECIES, INFRASPECIFIC_RANK, INFRASPECIFIC_EPITHET will be used for searching against the embedded TPL database. Please note the authorship will not be used in searching, therefore the same scientific name with different authorship should result in multiple entries. 
 
-if exact = TRUE, the function only show the species that perfectly match the "keywords". If exact = FALSE, the function use the general expression(function grep()) and will return all the species containting the "keywords". 
+Since 'f.' is also used in the authorship,please do not provide the author name for the species when it is a form.Eg. the name "Hypoxishirsuta (L.) Coville f. vollosissima Fernald". should be provided as "Hypoxis hirsuta f. vollosissima Fernald" or "Hypoxis hirsuta f. vollosissima".
 
-The function also allows Approximate String Matching (Fuzzy Matching) using agrep(), when exact = FALSE and spell_error_max > 0. But the functions will be much more slower. 
+if exact = TRUE, the function only show the species that perfectly matching the "keywords". If exact = FALSE, the function use the general expression(function grep()) and will return all the species containting the "keywords". 
 
+The function also allows Approximate String Matching (Fuzzy Matching) using agrep(), when exact = FALSE and spell_error_max > 0. But it will be much more slower. 
 
 }
 \value{
-A data frame containing the following columns
-\item{SEARCH}{taxa parsed, used as the keyword of searching}
-\item{ID }{ID from the TPL database}
-\item{FAMILY }{The family provided by the plantlist website}
+The function will reture a data frame containing the following columns
 \item{SCIENTIFIC_NAME }{The scientifc name matched}
 \item{AUTHOR }{the authorship for SCIENTIFIC_NAME}
 \item{STATUS }{status of this matched scientific name}
+\item{FAMILY }{The family provided by the plantlist website}
 \item{ACCEPTED_ID }{the accepted ID for the matched scientific name}
 \item{ACCEPTED_SPECIES }{The accepted species}
 \item{ACCEPTED_AUTHOR }{The authorship for the accepted species}
@@ -54,7 +53,7 @@ Jinlong Zhang \email{ jinlongzhang01@gmail.com }
 }
 
 \seealso{
-See Also as \code{\link{TPL}} for family of each genus
+See Also \code{\link{TPL}} for family of each genus
 }
 \examples{
 
