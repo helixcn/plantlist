@@ -1,4 +1,4 @@
-status <- function (species = NA, exact = TRUE, spell_error_max = NULL){
+status <- function (species = NA, exact = TRUE, spell_error_max = NULL, detail = FALSE){
 parse_taxa <- function(taxa){
     parse_taxon <- function(taxon){
         replace_space <- function(x) {
@@ -187,6 +187,9 @@ parse_taxa <- function(taxa){
     }
     res_seed$AUTHOR <- iconv(res_seed$AUTHOR, from = "UTF-8", to = "utf8")
     res_seed$ACCEPTED_AUTHOR <- iconv(res_seed$ACCEPTED_AUTHOR, from = "UTF-8", to = "utf8")
+    if(detail){
+        return(res_seed[-1,])
+    }
     results <- res_seed[-1,c("SEARCH", "AUTHOR", "STATUS","FAMILY", "ACCEPTED_SPECIES", "ACCEPTED_AUTHOR")]
     colnames(results) <- c("SCIENTIFIC_NAME", "AUTHOR", "STATUS","FAMILY", "ACCEPTED_SPECIES", "ACCEPTED_AUTHOR")
     row.names(results) <- NULL

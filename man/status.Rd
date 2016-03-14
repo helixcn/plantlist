@@ -7,7 +7,7 @@ Looking for the taxonomic status of species
 Looking for the taxonomic status of a scientific name for a plant based on the database from The Plant List Website. 
 }
 \usage{
-status(species = NA, exact = TRUE, spell_error_max = NULL)
+status(species = NA, exact = TRUE, spell_error_max = NULL, detail = FALSE)
 }
 
 \arguments{
@@ -15,14 +15,17 @@ status(species = NA, exact = TRUE, spell_error_max = NULL)
 A vector of character strings representing the scientific names of species
 }
   \item{exact}{
-Logical, Wheter the exactly matching search will be applied.  
+Logical, Wheter the exactly matching search will be applied. 
 }
   \item{spell_error_max}{
 Integer, represents the number of spelling errors. Only effective when exact = FALSE. 
 }
+  \item{detail}{
+Logical, implicate whether detailed version of the results will be displayed, including ID for the names being searched. 
+}
 }
 \details{
-The scientific names will be formatted before being searched, eg. The first letter of the scientific name will be changed to upper case while the rest will be in lower case; multiple whitespaces will be replaced by one, and the white space at the beginning or the end will be removed. The scientific name will then be parsed to GENUS, SPECIES, AUTHOR_OF_SPECIES, INFRASPECIFIC_RANK, INFRASPECIFIC_EPITHET, AUTHOR_OF_INFRASPECIFIC_RANK, respectively. However, only GENUS, SPECIES, INFRASPECIFIC_RANK, INFRASPECIFIC_EPITHET will be used for searching against the embedded TPL database. Please note the authorship will not be used in searching, therefore the same scientific name with different authorship should result in multiple entries. 
+The scientific names will be formatted before being processed, including: The first letter of the scientific name will be changed to upper case while the rest will be in lower case; multiple whitespaces will be replaced by one, and the white space at the beginning or the end will be removed. The scientific name will then be parsed to GENUS, SPECIES, AUTHOR_OF_SPECIES, INFRASPECIFIC_RANK, INFRASPECIFIC_EPITHET, AUTHOR_OF_INFRASPECIFIC_RANK, respectively. However, only GENUS, SPECIES, INFRASPECIFIC_RANK, INFRASPECIFIC_EPITHET will be used for searching against the embedded TPL database. Please note the authorship will not be used in searching, therefore the same scientific name with different authorship should result in multiple entries. 
 
 Since 'f.' is also used in the authorship,please do not provide the author name for the species when it is a form.Eg. the name "Hypoxishirsuta (L.) Coville f. vollosissima Fernald". should be provided as "Hypoxis hirsuta f. vollosissima Fernald" or "Hypoxis hirsuta f. vollosissima".
 
@@ -67,6 +70,7 @@ sp <- c( "Elaeocarpus decipiens",
 "Schima superba")
 
 status(sp)
+status(sp, detail = TRUE)
 status("Myrica rubra")
 status(c("Myrica rubra", "Adinandra millettii", 
          "Machilus thunbergii", "Ranunculus japonicus", 
