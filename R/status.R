@@ -187,6 +187,10 @@ parse_taxa <- function(taxa){
     }
     res_seed$AUTHOR <- iconv(res_seed$AUTHOR, from = "UTF-8", to = "utf8")
     res_seed$ACCEPTED_AUTHOR <- iconv(res_seed$ACCEPTED_AUTHOR, from = "UTF-8", to = "utf8")
+    
+    #### res_seed$AUTHOR <- res_seed$AUTHOR
+    #### res_seed$ACCEPTED_AUTHOR <- res_seed$ACCEPTED_AUTHOR
+    
     if(detail){
         return(res_seed[-1,])
     }
