@@ -1,3 +1,5 @@
 # Export all names
 exportPattern(".")
 import(utils)
+import(openxlsx)
+import(Rcpp)
