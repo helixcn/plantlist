@@ -48,7 +48,7 @@ The function will reture a data frame containing the following columns
 
 The Plantlist Website \url{http://www.theplantlist.org/}
 
-The embbed database is available at \url{http://pan.baidu.com/s/1hqHrW9I}
+The embedded database is available at http://pan.baidu.com/s/1hqHrW9I
 
 }
 \author{

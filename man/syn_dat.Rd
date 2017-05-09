@@ -23,7 +23,7 @@ This data frame contains the synonyms for the scientific names from the Plant Li
 Please refere to usage section
 }
 \source{
-The embbed database is available at \url{http://pan.baidu.com/s/1hqHrW9I}
+The embbed database is available at http://pan.baidu.com/s/1hqHrW9I
 }
 \references{
 The Plantlist Website \url{http://www.theplantlist.org/}

@@ -1,8 +1,9 @@
 Package: plantlist
 Type: Package
-Title: Looking Up the Status of Plant Scientific Names based on The Plant List Database
-Version: 0.3.0
-Date: 2017-4-20
+Title: Looking Up the Status of Plant Scientific Names based on The
+        Plant List Database
+Version: 0.3.1
+Date: 2017-5-9
 Authors@R: person("Jinlong", "Zhang", role = c("aut", "cre"),
 		     email = "jinlongzhang01@gmail.com")
 Author: Jinlong Zhang [aut, cre]           
@@ -16,3 +17,5 @@ Imports: openxlsx, Rcpp
 LazyLoad: yes
 LazyData: true
 URL: https://github.com/helixcn/plantlist/
+NeedsCompilation: no
+Packaged: 2017-05-09 08:21:11 UTC; jlzhang

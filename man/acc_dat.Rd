@@ -22,7 +22,7 @@ The data frame contain the columns of the status of a scientific name from the P
 Please refer to the format section.
 }
 \source{
-The embbed database is available at \url{http://pan.baidu.com/s/1hqHrW9I}
+The embbed database is available at http://pan.baidu.com/s/1hqHrW9I
 }
 \references{
 The Plantlist Website \url{http://www.theplantlist.org/}
