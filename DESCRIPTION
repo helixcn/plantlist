@@ -2,7 +2,7 @@ Package: plantlist
 Type: Package
 Title: Looking Up the Status of Plant Scientific Names based on The
         Plant List Database
-Version: 0.3.2
+Version: 0.3.4
 Date: 2017-5-10
 Authors@R: person("Jinlong", "Zhang", role = c("aut", "cre"),
 		     email = "jinlongzhang01@gmail.com")

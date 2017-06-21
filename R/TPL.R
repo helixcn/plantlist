@@ -43,6 +43,7 @@ TPL <- function (plant.names = NULL) {
         sort = FALSE, all.x = TRUE)
     
     return(data.frame(YOUR_SEARCH = res$YOUR_SPECIES, POSSIBLE_GENUS = res$YOUR_GENUS, 
-        FAMILY = res$FAMILY, ORDER = res$APGIII_ORDER, FAMILY_NUMBER = res$APGIII_NUMBER 
+        FAMILY = res$FAMILY, ORDER = res$APGIII_ORDER, FAMILY_NUMBER = res$APGIII_NUMBER, 
+        GROUP = res$GROUP       
         ))
 }
