@@ -9,15 +9,16 @@ A curated dataset that contains taxonomic and conservation status for the plant 
 }
 \usage{data("cnplants")}
 \format{
-  A data frame with 51751 observations on the following 11 variables.
+  A data frame with 51754 observations on the following 12 variables.
   \describe{
     \item{\code{SPECIES_CN}}{a character vector}
     \item{\code{SPECIES}}{a character vector}
     \item{\code{SPECIES_FULL}}{a character vector}
-    \item{\code{FAMILY_APGIII}}{a character vector}
-    \item{\code{FAMILY_APGIII_CN}}{a character vector}
     \item{\code{GENUS}}{a character vector}
     \item{\code{GENUS_CN}}{a character vector}
+    \item{\code{FAMILY_APGIII}}{a character vector}
+    \item{\code{FAMILY_CN}}{a character vector}
+    \item{\code{GROUP}}{a character vector}
     \item{\code{IUCN_CHINA}}{a character vector}
     \item{\code{ENDEMIC_TO_CHINA}}{a character vector}
     \item{\code{PROVINTIAL_DISTRIBUTION}}{a character vector}
