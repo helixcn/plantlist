@@ -1,32 +1,22 @@
-CTPL <- function(taxa = NULL, taxafile = NULL, outfile = "CTPL_results.csv"){
+CTPL <- function(taxa = NULL){
 
-    options(stringsAsFactors = FALSE)
-    if(is.null(taxa)&is.null(taxafile)){
-        stop("at least taxa or taxafile should be specified")
-    }
-    if(!is.null(taxa)&!is.null(taxafile)){
-        stop("taxa and taxafile should be not be specified at the same time")
-    }
-    if(is.null(taxa)){
-        taxa <- read.csv(taxafile, header = TRUE, stringsAsFactors = FALSE)
-    } else {
-        taxa <- taxa
-    }
-    
-    taxa <- data.frame(taxa)
-    colnames(taxa) <- "TAXA_NAME"
-    
     syst <- Sys.info()[['sysname']]
     if(syst == "Windows"){
-        cn.path <- system.file("extdata", "CN_win.csv", package = "plantlist")
-        dat <- read.csv(cn.path, header = TRUE)
-    } else {
-        cn.path <- system.file("extdata", "CN_linux.csv", package = "plantlist")
-        dat <- read.csv(cn.path, header = TRUE)
+        original_locale <- Sys.getlocale()
+        Sys.setlocale(category = "LC_ALL",locale = "Chinese")
+        #setlocale("LC_ALL", "English_United States.932") 
     }
-    
-    res <- merge(x = taxa, y = dat, by.x = "TAXA_NAME", by.y = "NAME", sort = FALSE, all.x = TRUE)
-    write.csv(res, outfile)
-    print(paste("File '", outfile, "' has been saved to", getwd(), sep = ""))
+
+    options(stringsAsFactors = FALSE)
+    taxa <- enc2utf8(taxa)
+    taxa <- data.frame(taxa)
+    colnames(taxa) <- "TAXA_NAME"
+
+    cnplants = plantlist::cnplants
+    res <- merge(x = taxa, y = cnplants, by.x = "TAXA_NAME", by.y = "SPECIES_CN", sort = FALSE, all.x = TRUE)
+#    if(syst == "Windows"){
+#        Sys.setlocale(locale = original_locale)
+#    }
+    # Encoding(res) <- "GB18030"
     return(res)
 }
