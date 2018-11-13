@@ -19,30 +19,43 @@ knitr::opts_chunk$set(
 # 简介
 
 plantlist是用来查询和处理植物学名的R程序包。类似的R程序包还有taxize (https://cran.r-project.org/web/packages/taxize/index.html)、Taxonstand(https://cran.r-project.org/web/packages/Taxonstand/index.html)等，相比之下plantlist的主要特点在于：
+
 1. 使用程序包自带的数据，不依赖网络数据库
+
 2. 优化了查询单个物种的算法，速度比taxize更快
+
 3. 查询结果所显示的信息更加简洁明确
+
 4. 用中文名批量查询学名等
 
 ## plantlist主要功能
 
 1.  批量查询植物科属，内置的数据主要来源于The Plant List网站(www.theplantlist.org/)，其中被子植物采用APGIII分类系统，同时提供维管植物每个科的编号，方便标本馆管理植物标本。
+
 2.  直接生成科/属/种的列表, 以便通过Phylomatic等软件生成进化树
+
 3.  用中文名批量查询植物学名以及科属
+
 4.  查询学名的接受状态以及完整学名等
 
 ## plantlist包内的函数
 
 * `CTPL` 通过中文名查询植物的完整学名和科属
+
 * `CTPL2` 通过中文名查询每个种的科、属、分布、海拔、IUCN等级数据
+
 * `status` 查询每个学名在The Plant List 1.1数据库中的接受状态
+
 * `taxa.table` 基于TPL查询结果制作科属种列表， 以便用Phylomatic软件建立进化树
+
 * `TPL` 提供学名， 查询目、科、属以及科在分类系统中的编号
 
 ## plantlist包内的数据集
 
 * `acc_dat` 数据集 The Plant List网站上所有接受名
+
 * `cnplants` 数据集 《中国植物名录》及每个种的科、属、分布、海拔、IUCN等级数据
+
 * `syn_dat` 数据集 The Plant List 1.1 网站异名数据库
 
 # 软件安装
@@ -86,6 +99,7 @@ Rtools安装完成后可以通过以下方式检查是否安装成功:
 ## 安装openxlsx程序包
 
 openxlsx程序包，用来读写标本数据的xlsx模板， 在RGUI的命令行中输入：
+
 ```R
 install.packages("openxlsx")
 ```
