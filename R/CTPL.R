@@ -1,10 +1,9 @@
-CTPL <- function(taxa = NULL){
-
+CTPL <- function(taxa = NULL, print_as_list = TRUE){
+    
     syst <- Sys.info()[['sysname']]
     if(syst == "Windows"){
-        original_locale <- Sys.getlocale()
-        Sys.setlocale(category = "LC_ALL",locale = "Chinese")
-        #setlocale("LC_ALL", "English_United States.932") 
+        # Ensure that Chinese Characters could be displayed properly.
+        suppressMessages(Sys.setlocale(category = "LC_ALL", locale = "Chinese"))
     }
 
     options(stringsAsFactors = FALSE)
@@ -12,11 +11,13 @@ CTPL <- function(taxa = NULL){
     taxa <- data.frame(taxa)
     colnames(taxa) <- "TAXA_NAME"
 
-    cnplants = plantlist::cnplants
-    res <- merge(x = taxa, y = cnplants, by.x = "TAXA_NAME", by.y = "SPECIES_CN", sort = FALSE, all.x = TRUE)
-#    if(syst == "Windows"){
-#        Sys.setlocale(locale = original_locale)
-#    }
-    # Encoding(res) <- "GB18030"
-    return(res)
+    cnplants_dat = plantlist::cnplants_dat
+    res <- merge(x = taxa, y = cnplants_dat, by.x = "TAXA_NAME", by.y = "SPECIES_CN", sort = FALSE, all.x = TRUE)
+
+    if(print_as_list){
+        print.listof(res)
+        return(invisible(res))
+    } else {
+        return(res)
+    }
 }

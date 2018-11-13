@@ -1,4 +1,5 @@
 # Export all names
+exportPattern("^[[:alpha:]]+")
 exportPattern(".")
 import(utils)
 import(openxlsx)

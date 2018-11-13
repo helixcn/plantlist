@@ -7,25 +7,46 @@ Search Families Based on Scientific or Chinese Names of Plants
 This function prepare checklist of plants with scientific name, Kew Family and APGIII family based on Chinese Names specified in an text file.
 }
 \usage{
-CTPL(taxa = NULL, taxafile = NULL, outfile = "CTPL_results.csv")
+CTPL(taxa = NULL, print_as_list = TRUE)
 }
 \arguments{
   \item{taxa}{
-  Character vector of the species names.
+  Character vector of the species names (Chinese Characters).
 }
-  \item{taxafile}{
-  Character string of the text file containing the species names to search.
-}
-  \item{outfile}{
-  Name of the CSV file containing the results
-}
+  \item{print_as_list}{
+  Logical, implying how the results should be printed, if TRUE, use the function print.listof() to print.
+  }
 }
 \details{
-The file containing Chinese Names must be in plain text, and encoded in ANSII (Windows) or UTF-8 (Linux or MacOS), one row for one species. 
+A vector of character strings containing the Chinese Names to look up. 
 }
 \value{
-A data frame of the species with family. 
-A file "CTPL_results.csv" will be generated in the working directory.
+A data frame containing the following columns:
+
+\item{TAXA_NAME}{Chinese Name of the taxa}
+
+\item{SPECIES}{Scientific name without authorship}
+
+\item{SPECIES_FULL}{Scientific name}
+
+\item{GENUS}{Genus}
+
+\item{GENUS_CN}{Genus in Chinese}
+
+\item{FAMILY_APGIII}{The family in APGIII classification systems}
+
+\item{FAMILY_CN}{The family name in Chinese}
+
+\item{GROUP}{The group of vascular plants}
+
+\item{IUCN_CHINA}{The IUCN status published in 2014.}
+
+\item{ENDEMIC_TO_CHINA}{Logical, Is the taxa endemic to China}
+
+\item{PROVINTIAL_DISTRIBUTION}{Provinces in which the taxa is naturally occurred}
+
+\item{ALTITUDE}{Altitudinal range in meters}
+
 }
 \references{
 The Plant List Website. 
@@ -35,6 +56,5 @@ Jinlong Zhang \email{ jinlongzhang01@gmail.com }
 }
 \examples{
 # Do not Run
-# path <- system.file("extdata", "CTPL_test.txt", package = "plantlist")
-# CTPL(file = path)
+# see the vignettes
 }

@@ -27,23 +27,19 @@ TPL <- function (plant.names = NULL) {
         return(paste(first, second, sep = ""))
     }
     
-    APGIII_GENERA.path <- system.file("extdata", "APGIII_GENERA.csv", package = "plantlist")
-    APGIII_ORDERS.path <- system.file("extdata", "APGIII_ORDERS.csv", package = "plantlist")
-    
-    APGIII_GENERA <- read.csv(APGIII_GENERA.path, header = TRUE, stringsAsFactors = FALSE)
-    APGIII_ORDERS <- read.csv(APGIII_ORDERS.path, header = TRUE, stringsAsFactors = FALSE)
+    genera_dat <- plantlist::genera_dat
+    orders_dat <- plantlist::orders_dat
     
     genus <- get.genus(plant.names)
     genus <- data.frame(YOUR_SPECIES = plant.names, YOUR_GENUS = genus)
     
-    res1 <- merge(x = genus, y = APGIII_GENERA, by.x = "YOUR_GENUS", 
+    res1 <- merge(x = genus, y = genera_dat, by.x = "YOUR_GENUS", 
         by.y = "GENUS", sort = FALSE, all.x = TRUE)
 
-    res <- merge(x = res1, y = APGIII_ORDERS, by.x = "FAMILY",by.y = "APGIII_FAMILY",  
+    res <- merge(x = res1, y = orders_dat, by = "FAMILY",  
         sort = FALSE, all.x = TRUE)
     
     return(data.frame(YOUR_SEARCH = res$YOUR_SPECIES, POSSIBLE_GENUS = res$YOUR_GENUS, 
-        FAMILY = res$FAMILY, ORDER = res$APGIII_ORDER, FAMILY_NUMBER = res$APGIII_NUMBER, 
-        GROUP = res$GROUP       
-        ))
+        FAMILY = res$FAMILY, FAMILY_NUMBER = res$FAMILY_NUMBER, ORDER = res$ORDER,  
+        GROUP = res$GROUP))
 }

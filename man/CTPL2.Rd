@@ -52,6 +52,6 @@ Various sources. Detailed information for the master file is available at \url{h
 Jinlong Zhang \email{ jinlongzhang01@gmail.com }
 }
 \examples{
-path <- system.file("extdata", "test_checklist.xlsx", package = "plantlist")
-CTPL2(infile = path)
+# Not run
+# see the vignettes
 }
