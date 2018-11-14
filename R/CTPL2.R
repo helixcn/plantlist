@@ -17,7 +17,9 @@ CTPL2 <- function (infile = NULL, outfile = "result_CTPL2.xlsx")
   res <- merge(x = taxa, y = cnplants_dat, by.x = "SPCN_CTPL2", 
                by.y = "SPECIES_CN", sort = FALSE, all.x = TRUE)
   openxlsx::write.xlsx(res, outfile)
-  print(paste("File '", outfile, "' has been saved to '", getwd(), 
-              "'", sep = ""))
+  print(paste("File '", outfile, 
+        "' has been saved to:\n'", 
+        getwd(), 
+        "'", sep = ""))
   return(invisible(res))
 }
