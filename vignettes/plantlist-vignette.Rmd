@@ -5,20 +5,10 @@ date: "`r Sys.Date()`"
 biblio-style: apalike
 header-includes:
   - \usepackage{ctex}
-output:
-  prettydoc::html_pretty:
-    
-    toc: true
-    theme: cayman
-    highlight: github
-  rticles::ctex:
-    fig_caption: yes
-    number_sections: yes
-    toc: yes
+output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{01 ggtree Introduction}
-  %\usepackage[utf8]{inputenc}
-  %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{Vignette Title}
+  \usepackage[utf8]{inputenc}
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
