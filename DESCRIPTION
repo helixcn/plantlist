@@ -2,7 +2,7 @@ Package: plantlist
 Type: Package
 Title: Looking Up the Status of Plant Scientific Names based on The
         Plant List Database
-Version: 0.5.1
+Version: 0.5.2
 Date: 2018-11-14
 Authors@R: person("Jinlong", "Zhang", role = c("aut", "cre"),
 		     email = "jinlongzhang01@gmail.com")
@@ -13,10 +13,9 @@ Description: Looking up the status of scientific names and check
 License: GPL-2
 Depends: R (>= 3.0.3)
 Imports: openxlsx, Rcpp
-Suggests: knitr, prettydoc, rmarkdown
 Encoding: UTF-8
 LazyLoad: yes
 LazyData: true
 URL: https://github.com/helixcn/plantlist/
 NeedsCompilation: no
-VignetteBuilder: knitr
+
