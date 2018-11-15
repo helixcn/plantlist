@@ -15,7 +15,10 @@ CTPL <- function(taxa = NULL, print_as_list = TRUE){
     res <- merge(x = taxa, y = cnplants_dat, by.x = "TAXA_NAME", by.y = "SPECIES_CN", sort = FALSE, all.x = TRUE)
 
     if(print_as_list){
-        print.listof(res)
+        if(nrow(res) > 6){
+            cat("Note: too many rows to show, only the first few rows were printed")
+        }
+        print.listof(head(res)) # Only the first few species will be printed
         return(invisible(res))
     } else {
         return(res)
