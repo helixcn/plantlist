@@ -15,6 +15,7 @@ The Chinese Plants Database from Various sources
     \item{\code{SPECIES}}{a character vector}
     \item{\code{SPECIES_FULL}}{a character vector}
     \item{\code{GENUS}}{a character vector}
+    \item{\code{GENUS_AUTHOR}}{a character vector}
     \item{\code{GENUS_CN}}{a character vector}
     \item{\code{FAMILY}}{a character vector}
     \item{\code{FAMILY_CN}}{a character vector}
