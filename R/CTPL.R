@@ -1,5 +1,9 @@
 CTPL <- function(taxa = NULL, print_as_list = TRUE){
     
+    if(taxa = ""|is.null(taxa)){
+        stop("taxa is empty, please provide a Chinese Name")
+    }
+    
     syst <- Sys.info()[['sysname']]
     if(syst == "Windows"){
         # Ensure that Chinese Characters could be displayed properly.
