@@ -1,0 +1,13 @@
+{
+    "path" : "C:/Jinlong/github packages/plantlist/vignettes",
+    "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 3
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
