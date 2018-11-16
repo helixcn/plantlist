@@ -1,6 +1,6 @@
 CTPL <- function(taxa = NULL, print_as_list = TRUE){
     
-    if(taxa = ""|is.null(taxa)){
+    if(any(taxa == ""|is.null(taxa))){
         stop("taxa is empty, please provide a Chinese Name")
     }
     
