@@ -1,16 +1,34 @@
 CTPL <- function(taxa = NULL, print_as_list = TRUE){
-    
+    options(stringsAsFactors = FALSE)
+
     if(any(taxa == ""|is.null(taxa))){
         stop("taxa is empty, please provide a Chinese Name")
     }
     
-    syst <- Sys.info()[['sysname']]
-    if(syst == "Windows"){
-        # Ensure that Chinese Characters could be displayed properly.
-        suppressMessages(Sys.setlocale(category = "LC_ALL", locale = "Chinese"))
+
+    if(is.null(taxa)){
+        stop("At least more than one taxa should be provided.")
+    }
+    
+    taxa_count <- table(taxa)
+    
+    # Remove duplicates
+    if(any(taxa_count > 1)){
+        taxa_names <- names(taxa_count)
+        taxa_dup <- taxa_names[taxa_count > 1]
+        cat("Duplicated taxa names have been removed:\n", taxa_dup,"\n")
+    }
+    taxa <- unique(taxa)
+    
+    # Ensure only the species found within the embedded database can be used for searching.
+    if(!all(taxa %in% plantlist::cnplants_dat$SPECIES_CN)){
+        warning("Taxa: ", paste(taxa[!taxa %in% plantlist::cnplants_dat$SPECIES_CN], collapse = ", "),
+                "\n could not be recognized.")
+        taxa <- taxa[taxa %in% plantlist::cnplants_dat$SPECIES_CN]
+    } else {
+        taxa = taxa
     }
 
-    options(stringsAsFactors = FALSE)
     taxa <- enc2utf8(taxa)
     taxa <- data.frame(taxa)
     colnames(taxa) <- "TAXA_NAME"
