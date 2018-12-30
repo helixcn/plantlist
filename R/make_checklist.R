@@ -84,7 +84,8 @@ function( checklist_dat = NULL,
                                                                   temp_species_dat$AUTHOR_OF_INFRASPECIFIC_RANK_PARSED, sep = "") 
                                                ), collapse = " ")
                                            }, 
-                                           
+                                           "",
+                                           paste("**Specimens:**", paste(unique(temp_species_dat$SPECIMENS)), collapse = ""),
                                            "",
                                            paste("**IUCN status:**", paste(unique(temp_species_dat$IUCN_CHINA)), collapse = ""),
                                            "",
@@ -147,6 +148,8 @@ function( checklist_dat = NULL,
                                                                   temp_species_dat$AUTHOR_OF_INFRASPECIFIC_RANK_PARSED, sep = "") 
                                                ), collapse = " ")
                                            }, 
+                                           "",
+                                           paste("**Specimens:**", paste(unique(temp_species_dat$SPECIMENS)), collapse = ""),
                                            "", ""
                                        ))
                     }
