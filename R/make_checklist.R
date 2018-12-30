@@ -94,8 +94,9 @@ function( checklist_dat = NULL,
                                            paste("**Altitude:**", paste(unique(temp_species_dat$ALTITUDE)), collapse = ""),
                                            "",
                                            paste("**Distribution:**", paste(unique(temp_species_dat$PROVINTIAL_DISTRIBUTION)), collapse = ""),
-                                           "",
-                                           ""
+                                           " ",
+                                           " ",
+                                           " "
                                        ))
                     }
                     
