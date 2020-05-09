@@ -37,8 +37,6 @@ plantlist是用来查询和处理植物学名的R程序包，自2013年发布以
 
 * `CTPL()` 用中文名查询每个种的科、属、分布、海拔、在中国的IUCN等级数据
 
-* `CTPL2()` 功能与CTPL类似，但`CTPL2()`只读写Excel文件，而CTPL在查询时可直接输入中文字符。
-
 * `status()` 查询每个学名在The Plant List  1.1数据库中的接受状态（该数据库已经放在程序包中）
 
 * `taxa.table()` 基于TPL查询结果制作科、属、种列表，以便用Phylomatic软件建立进化树
@@ -59,7 +57,7 @@ plantlist是用来查询和处理植物学名的R程序包，自2013年发布以
 
 # 软件安装
 
-plantlist必须要先安装R才能使用。由于plantlist内部函数`CTPL2`函数需要使用openxlsx程序包读取xlsx文件，所以也要安装openxlsx所依赖的Rtools以及Rcpp，并配置好启动路径才能正常使用。
+plantlist必须要先安装R才能使用。
 
 ## 安装R软件
 
@@ -78,46 +76,6 @@ R软件下载的地址为:(http://cran.r-project.org/bin/windows/base/)。请尽
 推荐用Rstudio的Console输入函数查询，这是因为在部分Windows系统中，R自带的RGui中无法正常输入汉字，而Rstudio较好地解决了字符编码和汉字输入的问题。建议所有文本文件都使用UTF-8编码，以降低出现乱码的机会。
 
 Rstudio可以在(https://www.rstudio.com/products/rstudio/download/) 下载。
-
-## 安装Rtools
-
-Rtools是编写R程序包的工具软件，含有读写xlsx文件所需的unzip和zip函数，安装时**必须允许Rtools修改启动路径**。
-
-Rtools的下载地址为(https://cran.r-project.org/bin/windows/Rtools/)。安装Rtools时须允许其修改系统路径system PATH。
-
-![](images/3.png){ width=90% }
-
-图3. Rtools下载页面，**请以列表中第一行未冻结的版本为准**
-
-![](images/4.png){ width=90% }
-
-图4. 安装Rtools时应该允许其修改system PATH
-
-Rtools安装完成后可以通过以下方式检查是否安装成功:
-
-![](images/5.png){ width=90% }
-
-图5. 在控制台中输入zip, 如图所示，若未提示错误，则Rtools安装和配置成功
-
-## 安装openxlsx程序包
-
-openxlsx程序包用来读取和保存带有植物名录的xlsx模板，在Rconsole中输入：
-
-```R
-install.packages("openxlsx")
-```
-
-然后，在弹出的窗口选择距离较近的CRAN镜像，openxlsx程序包会自动下载并安装好。部分地区由于网络限制，不一定能打开r-project网站的云服务，以致报错。此时可以用以下命令从指定的CRAN镜像网站安装:
-
-```R
-install.packages("ctv", repos = "http://cran.R-project.org")
-```
-
-其中 http://cran.R-project.org 可替换为任何CRAN镜像名。CRAN镜像列表见以下网址：https://cran.r-project.org/mirrors.html
-
-![](images/6.png){ width=90% }
-
-图6. 通过`install.packages`命令安装openxlsx程序包
 
 ## 安装 plantlist程序包
 
@@ -165,7 +123,7 @@ install.packages("devtools")
 
 示例代码如下：
 
-```R
+```{R}
 library(plantlist)
 CTPL(c("杨梅", "多花泡花树"))
 CTPL(c("网脉实蕨", "江南星蕨"))
@@ -196,43 +154,6 @@ CTPL(sp)
 
 图 8. CTPL的查询结果
 
-## `CTPL2()` 用中文名查询科、属、分布、海拔、IUCN等级数据
-
-`CTPL2`可直接读取Excel文件第一列的数据，并以此和内置的`cnplants_dat`数据匹配，结果保存在自动生成的xlsx文件中。
-
-示例代码如下：
-
-```R
-# Example of CTPL2
-library(plantlist)
-library(openxlsx)
-species <- data.frame(plants = c("侧金盏花",
-                                 "多花泡花树", 
-                                 "网脉山龙眼", 
-                                 "绿樟", 
-                                 "网脉实蕨",
-                                 "无根藤",
-                                 "黄樟",
-                                 "香叶树",
-                                 "山鸡椒",
-                                 "潺槁木姜子",
-                                 "豺皮樟",
-                                 "浙江润楠",
-                                 "广东润楠",
-                                 "广寄生",
-                                 "两广梭罗",
-                                 "假苹婆",
-                                 "地桃花",
-                                 "白背黄花稔",
-                                 "通泉草",
-                                 "野牡丹"))
-write.xlsx(species, "species_to_search.xlsx")
-CTPL2("species_to_search.xlsx")
-```
-![](images/9.png){ width=80% }
-
-图9. CTPL2的查询结果。
-
 ## `status()` 查询每个学名在The Plant List 1.1 的接受状态
 
 函数的参数 `status(species =NA, exact =TRUE, spell_error_max =NULL)`
@@ -249,7 +170,7 @@ CTPL2("species_to_search.xlsx")
 
 示例代码：
 
-```R
+```{R}
 library(plantlist)
 
 ## 建立物种名单
@@ -306,7 +227,7 @@ status("Hypoxis hirsuta f. villosissima")
 
 查询结果多用于在Phylomatic软件中构建进化树。示例代码如下：
 
-```R
+```{R}
 sp <- c( "Ranunculus japonicus", 
          "Anemone udensis",
          "Ranunculus repens",
@@ -320,7 +241,7 @@ taxa.table(res)
 
 TPL函数输入的数据必须是字符串格式的向量。可以查询科、属、种的相应信息，但是并不会提示学名是否为接受名。查询学名是否有效， 请用`status`函数。
 
-```R
+```{R}
 TPL("Carex") # 查询薹草属
 TPL("Apple") # 查询苹果的英文名
 splist <- c("Ranunculus japonicus", 
