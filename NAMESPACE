@@ -2,6 +2,4 @@
 exportPattern("^[[:alpha:]]+")
 exportPattern(".")
 import(utils)
-import(openxlsx)
-import(Rcpp)
 importFrom("stats", "aggregate", "na.omit")
