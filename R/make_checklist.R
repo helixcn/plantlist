@@ -2,12 +2,13 @@ make_checklist <-
 function( checklist_dat = NULL,
                             outfile = "output_make_checklist.md",
                             theme = c("complex", "simple", "minimal")){
-
-    warning(paste("Taxa", paste(checklist_dat$SPECIES[
+    if(any(is.na(checklist_dat$SPECIES_FULL))){
+        warning(paste("Taxa", paste(checklist_dat$YOUR_SEARCH[
                      is.na(checklist_dat$SPECIES_FULL)], 
                      collapse = ", ", sep = "")), 
                   " does not have full scientific name, ignored\n", sep = "")
-    checklist_dat <- checklist_dat[!is.na(checklist_dat$SPECIES_FULL), ]
+        checklist_dat <- checklist_dat[!is.na(checklist_dat$SPECIES_FULL), ]
+    }
     # checklist_dat <- na.omit(checklist_dat)
     theme <- match.arg(theme)
     # Give each group a number
