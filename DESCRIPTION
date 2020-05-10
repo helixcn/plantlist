@@ -2,14 +2,13 @@ Package: plantlist
 Type: Package
 Title: Looking Up the Status of Plant Scientific Names based on The
         Plant List Database
-Version: 0.6.2
-Date: 2020-05-09
+Version: 0.6.4
+Date: 2020-05-10
 Authors@R: person("Jinlong", "Zhang", role = c("aut", "cre"),
 		     email = "jinlongzhang01@gmail.com")
 Author: Jinlong Zhang [aut, cre]
 Maintainer: Jinlong Zhang <jinlongzhang01@gmail.com>
-Description: Looking up the status of scientific names and check
-              the families for plant species based on The Plant List Database.
+Description: Miscellaneous functions for looking up systematic position (Family, Order, Family Number) for vascular plant species, compiling check list, counting the number taxa under each category based on a curated database.
 License: GPL-2
 Depends: R (>= 3.0.3)
 Encoding: UTF-8
@@ -17,7 +16,7 @@ LazyLoad: yes
 LazyData: true
 URL: https://github.com/helixcn/plantlist/
 NeedsCompilation: no
-Suggests: 
+Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr

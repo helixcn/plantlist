@@ -62,6 +62,9 @@ CTPL <- function(taxa = NULL, print_as_list = TRUE){
         if(any(selected_index > 0)){
              res0 <- rbind(res0, cnplants_dat[selected_index,])
              rep_id[i] <- table(selected_index)[2]
+             if(table(selected_index)[2] > 1){
+                 warning(paste("Taxa: '", YOUR_SEARCH[i], "' matched more than one row.", collapse = "", sep = "")) 
+             }
         } else {
              res0 <- rbind(res0, res_empty)
              rep_id[i] <- 1
