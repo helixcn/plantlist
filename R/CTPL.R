@@ -76,7 +76,7 @@ CTPL <- function(taxa = NULL, print_as_list = TRUE){
     row.names(res) <- 1:nrow(res)
     if(print_as_list){
         if(nrow(res) > 6){
-            cat("Note: too many rows, only the first few were printed")
+            cat("Note: too many rows to show, only the first few were printed")
         }
         print.listof(head(res)) # Only the first few species will be printed
         return(invisible(res))

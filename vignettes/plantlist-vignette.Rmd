@@ -9,39 +9,59 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# 简介
-
-plantlist是用来查询和处理植物学名的R程序包，自2013年发布以来，受到很多老师和同学的关注。R软件中，类似的程序包还有 taxize (https://cran.r-project.org/web/packages/taxize/index.html)、Taxonstand(https://cran.r-project.org/web/packages/Taxonstand/index.html)等。 
-
-相比之下plantlist的主要特点在于：
-
-1. 使用校对过的内置数据，使用过程中不需要连网。
-
-2. 优化了查询单个物种名是否为接受名的算法，速度比taxize更快
-
-3. 查询结果所显示的信息更加简洁清晰
-
-4. 支持用中文名批量查询学名
+plantlist是用来查询和处理植物学名的R程序包，自2013年发布以来，受到很多老师和同学的关注。
 
 ## plantlist的主要功能
 
-1.  批量查询植物科属，内置的数据主要来源于The Plant List网站(www.theplantlist.org/)，其中被子植物采用APGIII分类系统，同时提供维管植物每个科的编号，极大方便了植物标本的管理，方便植物名录处理等。
+1.  批量查询植物科属，内置的数据主要来源于The Plant List网站 ( www.theplantlist.org/  )，其中被子植物采用APGIII分类系统，同时提供维管植物每个科的编号，可用于植物标本管理，方便编纂植物名录等。
 
-2.  直接生成科/属/种的列表, 以便导入Phylomatic等软件生成进化树
+2.  直接生成科/属/种的列表, 以便导入Phylomatic, V.PhyloMaker等软件生成进化树
 
 3.  用中文名批量查询植物学名以及科属
 
 4.  查询学名的接受状态以及完整学名等
 
+5.  制作不同风格的中文植物名录Markdown源文件
+
+## 类似的程序包或网站
+
+R软件中，类似的程序包还有：
+
+- taxize (https://cran.r-project.org/web/packages/taxize/index.html)
+
+- Taxonstand (https://cran.r-project.org/web/packages/Taxonstand/index.html)，
+
+网站有：
+
+- 植物分类查询 (http://tnrs.iplantcollaborative.org/instructions.html)
+
+- NSII名录批量自动校对服务 (http://www.nsii.org.cn/2017/checklist.php) 
+
+- 中国生物物种名录 (http://www.sp2000.org.cn/) 。
+
+相比之下，plantlist的主要特点在于：
+
+1. 使用校对过的内置数据，使用过程中不需要连网。
+
+2. 优化了查询单个物种名是否为接受名的算法，速度更快
+
+3. 查询结果所显示的信息更加简洁清晰
+
+4. 支持用中文名批量查询学名
+
 ## plantlist包内的函数
 
-* `CTPL()` 用中文名查询每个种的科、属、分布、海拔、在中国的IUCN等级数据
+- `TPL()` 用学名查询目、科、属以及科在分类系统中的编号
 
-* `status()` 查询每个学名在The Plant List  1.1数据库中的接受状态（该数据库已经放在程序包中）
+- `taxa.table()` 基于TPL查询结果制作科、属、种列表，以便用Phylomatic软件建立进化树
 
-* `taxa.table()` 基于TPL查询结果制作科、属、种列表，以便用Phylomatic软件建立进化树
+- `status()` 查询每个学名在The Plant List  1.1数据库中的接受状态（该数据库已经放在程序包中）
 
-* `TPL()` 用学名查询目、科、属以及科在分类系统中的编号
+- `CTPL()` 查询中国记录植物的科、属、分布、海拔、IUCN等级等
+
+- `count_taxa` 统计`CTPL`查询结果出现的科、属、种等数量
+
+- `make_checklist` 根据`CTPL`的查询结果，制作三种风格的植物名录（按照系统发育顺序排列）
 
 ## 内置数据
 
@@ -55,168 +75,42 @@ plantlist是用来查询和处理植物学名的R程序包，自2013年发布以
 
 * `syn_dat`: The Plant List 1.1 网站的异名数据库
 
-# 软件安装
+# 安装
 
-plantlist必须要先安装R才能使用。
+由于plantlist最新版本的源代码保存在github (https://www.github.com/helixcn/plantlist)。
 
-## 安装R软件
-
-R软件下载的地址为:(http://cran.r-project.org/bin/windows/base/)。请尽量下载最新版本的R并按照默认路径安装。因为程序运行过程中涉及UTF8字符转换，所以R版本不能低于3.0.3。
-
-![](images/1.png){ width=90% }
-
-图1. R软件windows版本下载页
-
-![](images/2.png){ width=90% }
-
-图2. R软件3.3.1的登录界面
-
-## 安装Rstudio
-
-推荐用Rstudio的Console输入函数查询，这是因为在部分Windows系统中，R自带的RGui中无法正常输入汉字，而Rstudio较好地解决了字符编码和汉字输入的问题。建议所有文本文件都使用UTF-8编码，以降低出现乱码的机会。
-
-Rstudio可以在(https://www.rstudio.com/products/rstudio/download/) 下载。
-
-## 安装 plantlist程序包
-
-由于plantlist程序包内置的数据约20M, 不便提交到CRAN, 最新版本的源代码保存在github。
-
-### 从github下载和安装
-
-plantlist的github网址是(https://www.github.com/helixcn/plantlist)。可使用如下命令安装：
+安装命令如下：
 
 ```R
-devtools::install_github("helixcn/plantlist")
+install.packages("remotes")
+remotes::install_github("helixcn/plantlist", build_vignettes = TRUE)
 ```
 
-若尚未安装devtools程序包, 需要输入以下命令安装:
+# 用法
 
-```R
-install.packages("devtools")
-```
+## `TPL()`:根据拉丁名，查询目、科、属及科的编号
 
-至此，plantlist及其依赖的程序包都安装好了。
-
-# plantlist各函数的用法
-
-在使用plantlist之前，必须用`library(plantlist)` 加载plantlist。查询每个函数的使用方法， 请输入`?函数名`，例如：`?TPL`即可查看TPL函数的帮助界面。
-
-## `CTPL()` 用中文名查询科、属、分布、海拔、IUCN等级数据
-
-调用方式和参数如下：
-`CTPL(taxa = NULL, print_as_list = TRUE)`
-
-其中taxa是植物的中文名， `print_as_list` 只是打印方式的选项，如果为TRUE， 则用列表的方式打印。
-
-**注意：用列表的方式打印，只是为了显示的方便，本函数返回值为data.frame, `print_as_list`参数并不会改变返回值的数据类型。**
-
-示例代码如下：
+`TPL`函数输入的数据必须是字符串向量。可以查询科、属、种的相应信息，但并不会提示学名是否为接受名。要查询学名是否为接受名，请用`status()`函数。
 
 ```{R}
 library(plantlist)
-CTPL(c("杨梅", "多花泡花树"))
-CTPL(c("网脉实蕨", "江南星蕨"))
-
-# 将结果保存到Excel文件中
-library(openxlsx)
-rrr <- CTPL(c("侧金盏花", 
-              "多花泡花树", 
-              "网脉山龙眼", 
-              "绿樟", 
-              "网脉实蕨"))
-write.xlsx(rrr, "results.xlsx")
-
-# 纯文本文件的读写
-# Save to UTF-8
-writeLines(text = c("桃儿七", 
-                    "连香树", 
-                    "水青树", 
-                    "绿樟", 
-                    "网脉实蕨"), 
-    con = "test_species.txt", 
-    useBytes = TRUE)
-sp <- readLines("test_species.txt", encoding = "UTF-8")
-CTPL(sp)
+TPL("Carex") # 薹草属
+TPL("Apple") # 苹果
+splist <- c("Ranunculus japonicus", 
+            "Solanum nigrum",
+            "Punica sp.", 
+            "Machilus", 
+            "Today", 
+            "####" )            ### 查询多个种
+res <- TPL(splist)
 ```
 
-![](images/10.png){ width=80% }
+## `taxa.table()` :基于`TPL`查询结果制作科、属、种列表
 
-图 8. CTPL的查询结果
-
-## `status()` 查询每个学名在The Plant List 1.1 的接受状态
-
-函数的参数 `status(species =NA, exact =TRUE, spell_error_max =NULL)`
-
-* `species`为输入的字符串向量。
-
-* `exact`表示是否进行精确匹配，如果不是精确匹配，则所有能用grep正则表达式匹配的结果都会显示。一般建议用精确匹配。
-
-* `spell_error_max` 为所允许的最大的错误拼写的字母数量。
-
-* `status`函数对输入的species物种名大小写不敏感,物种名的前后以及中间允许有多个空格，species可以包括或者不包括命名人（变型f.之前的命名人除外）。
-
-`status`函数可以查询变种var.  亚种 subsp. 以及变型f. 是否接受等信息.
-
-示例代码：
+查询结果多用于Phylomatic或V.PhyloMaker等软件构建进化树。示例代码如下：
 
 ```{R}
 library(plantlist)
-
-## 建立物种名单
-sp <-c("Elaeocarpus decipiens",
-       "Syzygium buxifolium",
-       "Daphniphyllum oldhamii",
-       "Loropetalum chinense",
-       "Rhododendron latoucheae",
-       "Rhododendron ovatum",
-       "Vaccinium carlesii",
-       "Schima superba")
-
-### 检查名单内每个种的接受情况以及接受名
-status(sp)
-
-### 检查一个种的接受情况
-status("Myrica rubra")              ## 杨梅
-status("Adinandra millettii")       ## 杨桐
-status("cyclobalanopsis neglecta ") ## 竹叶青冈
-status("Lirianthe henryi")          ## 大叶木兰
-
-#### 同时检查几个学名的状态
-status(c("Myrica rubra", 
-         "Adinandra millettii",
-         "Machilus thunbergii",
-         "Ranunculus japonicus",
-         "Cyclobalanopsis neglecta"))
-
-### Check the statusof a scientific name (with or without authorship)
-### 查询学名是否接受
-status("Hypoxis filifolia")
-
-### Subspecies (withor without authorship)
-### 查询亚种是否接受
-status("Hypoxis kilimanjarica subsp. kilimanjarica")
-
-### Variaty (with orwithout authorship)
-### 查询变种是否接受
-status("Hypoxis erecta var. aestivalis")
-
-### Form (with orwithout authorship)
-### 查询变型是否接受
-status("Hypoxis hirsuta f. villosissima")
-
-### 重要提示： 由于表示变型的 f. 有时也用于命名人中，
-### 因此，用status函数在查询变型时， 请勿为种添加命名人，
-### 但是变型的命名人可以提供或者不提供，具体为:
-"Hypoxis hirsuta (L.)Coville f. vollosissima Fernald"#  （不能处理）
-"Hypoxis hirsuta f. vollosissima Fernald"#（能处理）
-"Hypoxis hirsuta f. vollosissima"#（能处理）
-```
-
-## `taxa.table()` 基于TPL查询结果制作科属种列表
-
-查询结果多用于在Phylomatic软件中构建进化树。示例代码如下：
-
-```{R}
 sp <- c( "Ranunculus japonicus", 
          "Anemone udensis",
          "Ranunculus repens",
@@ -226,40 +120,158 @@ sp <- c( "Ranunculus japonicus",
 res <- TPL(sp)
 taxa.table(res)
 ```
-## `TPL()`根据拉丁名，查询目、科、属、以及科的编号
 
-TPL函数输入的数据必须是字符串格式的向量。可以查询科、属、种的相应信息，但是并不会提示学名是否为接受名。查询学名是否有效， 请用`status`函数。
+## `status()` :查询每个学名在The Plant List 1.1 (本程序包内置数据) 的接受状态
+
+函数参数:
+
+`status(species =NA, exact =TRUE, spell_error_max =NULL)`
+
+`status`函数可以查询变种var.、亚种 subsp.以及变型f.是否接受等信息
+
+- `species`为输入的字符串向量
+
+- `exact`表示是否进行精确匹配，如果选择`FALSE`，则所有能用`grep`正则表达式匹配的结果都会显示。一般用精确匹配即可
+
+- `spell_error_max` 为所允许的最大的错误拼写的字母数量
+
+`status`函数对输入的物种名大小写不敏感，物种名的前后以及中间允许有多个空格，species可以包括或者不包括命名人（变型f.之前的命名人除外）
+
+示例：
 
 ```{R}
-TPL("Carex") # 查询薹草属
-TPL("Apple") # 查询苹果的英文名
-splist <- c("Ranunculus japonicus", 
-            "Solanum nigrum",
-            "Punica sp.", 
-            "Machilus", 
-            "Today", 
-            "####" ) ### 查询多个种
-res <- TPL(splist)
+library(plantlist)
+
+#### 查询一个名称
+status("Myrica rubra")
+
+#### 查询多个名称
+status(c("Myrica rubra", 
+         "Adinandra millettii",
+         "Machilus thunbergii",
+         "Ranunculus japonicus",
+         "Cyclobalanopsis neglecta"))
 ```
 
-# 引用plantlist程序包
+**重要提示：** 
+由于表示变型的 f. 有时也用于命名人中，因此，用`status`函数在查询变型时， 请勿为种添加命名人，但是变型的命名人可以提供或者不提供，具体为:
 
-如果您使用了plantlist程序包，请通过以下方式引用：
+```
+"Hypoxis hirsuta (L.)Coville f. vollosissima Fernald"#  （不能处理）
+"Hypoxis hirsuta f. vollosissima Fernald"#（能处理）
+"Hypoxis hirsuta f. vollosissima"#（能处理）
+```
 
-Jinlong Zhang (2018). plantlist: Looking Up the Status of Plant Scientific Names based on The Plant List Database. R package version 0.5.3. https://github.com/helixcn/plantlist/
+## `CTPL()` :用中文名查询科、属、分布、海拔、IUCN等级数据
+
+调用方式：
+`CTPL(taxa = NULL, print_as_list = TRUE)`
+
+其中，`taxa`是植物的中文名向量， `print_as_list` 只是打印方式的选项，如果为TRUE， 则用列表的方式打印。
+
+**注意**：
+
+- 由于涉及中文输入和输出，需要在Rstudio中操作
+
+- 本函数返回值为data.frame, `print_as_list`参数并不改变返回值的数据类型
+
+示例：
+
+```{R}
+library(plantlist)
+CTPL(c("杨梅", "多花泡花树"))
+
+# 纯文本文件的读写
+writeLines(text = c("桃儿七", 
+                    "连香树", 
+                    "水青树", 
+                    "绿樟", 
+                    "网脉实蕨", "Magnolia coco", "Punica"), 
+    con = "test_species.txt", useBytes = TRUE)
+sp <- readLines("test_species.txt", encoding = "UTF-8")
+res_CTPL <- CTPL(sp)
+```
+
+## `count_taxa()` :统计CTPL结果的科、属、种数量
+
+调用方式：
+`count_taxa(checklist_dat)`
+
+`checklist_dat` 为`CTPL()`函数返回的结果，`CTPL`结果中没有信息的行，将会被忽略。
+
+```{R}
+library(plantlist)
+res_CTPL <- CTPL(c("桃儿七", 
+                   "连香树", 
+                   "水青树", 
+                   "绿樟", 
+                   "网脉实蕨", 
+                   "Magnolia coco", 
+                   "Punica"), print_as_list = FALSE)
+count_taxa(res_CTPL)
+```
+
+
+## `make_checklist()` :制作markdown格式的植物名录 （按照系统发育顺序排列）
+
+调用：
+```R
+make_checklist(checklist_dat = NULL, 
+                outfile = "output_make_checklist.md", 
+                theme = c("complex", "simple", "minimal"))
+```
+参数：
+
+- `checklist_dat = NULL`: 为CTPL函数返回的结果
+
+- `outfile`: 为输出的markdown文件的名称
+
+- `theme`: 有三种风格可选，其中 
+    - `complex`: 输出的资料最详实，包括IUCN等级、海拔、省级分布等
+    - `simple` : 包括物种名和引证的标本
+    - `minimal`: 只显示物种的中文名和完整学名
+
+关于分类单元的排列顺序：在大类群上按照苔藓、蕨类、裸子植物、被子植物的顺序；每个类群下，按照科的顺序号；科以下，属按照字母排列；属下各种按照分类单元的拉丁名排列。如有提供标本引证，则在CTPL返回的数据框上添加名为`SPECIMENS`的列即可。
+
+```R
+library(plantlist)
+res_CTPL <- CTPL(c("桃儿七", 
+                   "连香树", 
+                   "水青树", 
+                   "绿樟", 
+                   "网脉实蕨", 
+                   "Magnolia coco", 
+                   "Punica"), print_as_list = FALSE)
+make_checklist(res_CTPL)
+```
+
+# 引用
+
+如果您使用了plantlist程序包，请通过以下方式引用（请根据版本和日期做相应修改）：
+
+- Jinlong Zhang (2020). plantlist: Looking Up the Status of Plant Scientific
+  Names based on The Plant List Database. R package version 0.6.5.
+  https://github.com/helixcn/plantlist/
 
 # 致谢
+
+编写本程序包最早是2014年1月在中国科学院昆明植物研究所的《生态和进化中的现代统计：基于R语言的应用》（ http://blog.sciencenet.cn/blog-255662-793234.html ）课程时开始的。特别感谢杨雪飞老师的邀请以及多位老师同学共同讨论。
+
+本程序包苔藓植物各科属的中文名由中国科学院植物研究所刘冰博士提供。 Plantlist 1.1 数据库来源于汪远分享的数据。
 
 感谢高芳銮、李嵘、张健、朱慧玲、刘冰、胡晓丽、冯嘉恩、黄世芳、俞筱押、胡海花、李家湘、刘水银、鲍志贵、张美霞、葛斌杰、孔德良、刘振稳、龙文兴、金建军、夏尚文、李霞、陶旺兰、李秋萍、易逸瑜、张璋、骆争荣、彭舜磊、郭文永、贾蕙君等各位老师同学提出宝贵意见和建议。
 
 # 参考文献
 
-* 多识团队. (2016至今). 多识植物百科. http://doucet.ibiodiversity.net/.
+* 数据来源 https://github.com/helixcn/plantlist_data 。
+
+* 多识团队. (2016至今). 多识植物百科. http://duocet.ibiodiversity.net/.
 
 * 刘冰, 叶建飞, 刘夙, 汪远, 杨永, 赖阳均, 曾刚，林秦文. (2015). 中国被子植物科属概览: 依据 APG III 系统. 生物多样性, 23(2), 225-231.
 
-* 环境保护部, 中国科学院 (2013) 《中国生物多样性红色名录——高等植物卷 》 电子版来源： www.mep.gov.cn/gkml/hbb/bgg/201309/W020130917614244055331.pdf
+* 环境保护部, 中国科学院. (2013) 《中国生物多样性红色名录——高等植物卷 》 电子版来源： www.mep.gov.cn/gkml/hbb/bgg/201309/W020130917614244055331.pdf
 
 * Christenhusz, M., Zhang, X. C., and Schneider, H. (2011a). A linear sequence of extant families and genera of lycophytes and ferns. Phytotaxa. 19:7-54
 
 * Christenhusz, M., Reveal, J., Farjon, A., Gardner, M. F., Mill, R. R., and Chase, M. W. (2011b). A new classification and linear sequence of extant gymnosperms. Phytotaxa. 19:55-70
+

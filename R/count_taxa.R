@@ -1,10 +1,16 @@
 count_taxa <-
 function(checklist_dat){
-    if(any(is.na(checklist_dat$SPECIES_FULL))){
-        warning(paste("Taxa '", paste(checklist_dat$SPECIES[is.na(checklist_dat$SPECIES_FULL)]), collapse = ","),
-                  "' does not have full scientific name, ignored", sep = "")
-        checklist_dat <- checklist_dat[!is.na(checklist_dat$SPECIES_FULL), ]
+    checklist_dat <- subset(checklist_dat, select = c("YOUR_SEARCH", "GROUP", "SPECIES_FULL", "FAMILY_NUMBER", "FAMILY", "GENUS", "SPECIES"))
+    if(any(is.na(checklist_dat))){
+        warning(paste("Taxa '",
+            paste(checklist_dat$YOUR_SEARCH[is.na(checklist_dat$SPECIES)],
+                  collapse = ", "),
+            "' does not have full scientific name, ignored\n",
+            sep = ""))
     }
+
+    checklist_dat <- na.omit(checklist_dat)
+
     # Add a number to each group
     checklist_dat$GROUP <- ifelse(checklist_dat$GROUP == "Ferns and lycophytes",
                                   paste("2", checklist_dat$GROUP), checklist_dat$GROUP)
@@ -59,6 +65,6 @@ function(checklist_dat){
                 NO_OF_GENERA_BY_GROUP   = no_genera_by_group,
                 NO_OF_SPECIES_BY_GROUP  = no_species_by_group,
                 NO_OF_GENERA_BY_FAMILY  = no_genera_by_family,
-                NO_OF_SPECIES_BY_FAMILY = no_species_by_family, 
+                NO_OF_SPECIES_BY_FAMILY = no_species_by_family,
                 NO_OF_SPECIES_BY_GENUS  = no_species_by_genus))
 }
