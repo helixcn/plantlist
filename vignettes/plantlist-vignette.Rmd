@@ -79,19 +79,8 @@ Rstudio可以在(https://www.rstudio.com/products/rstudio/download/) 下载。
 
 ## 安装 plantlist程序包
 
-由于plantlist程序包内置的数据约20M, 不便提交到CRAN。稳定版本在R-Forge (https://r-forge.r-project.org/R/?group_id=2052), 最新版本的源代码保存在github。
+由于plantlist程序包内置的数据约20M, 不便提交到CRAN, 最新版本的源代码保存在github。
 
-![](images/7.png){ width=90% }
-
-图7. Rforge网站上plantlist的页面
-
-### 从R-Forge下载安装
-
-命令是:
-
-```R
-install.packages("plantlist", repos="http://R-Forge.R-project.org")
-```
 ### 从github下载和安装
 
 plantlist的github网址是(https://www.github.com/helixcn/plantlist)。可使用如下命令安装：
