@@ -175,23 +175,6 @@ status(c("Myrica rubra",
 
 - 本函数返回值为data.frame, `print_as_list`参数并不改变返回值的数据类型
 
-示例：
-
-```{R}
-library(plantlist)
-CTPL(c("杨梅", "多花泡花树"))
-
-# 纯文本文件的读写
-writeLines(text = c("桃儿七", 
-                    "连香树", 
-                    "水青树", 
-                    "绿樟", 
-                    "网脉实蕨", "Magnolia coco", "Punica"), 
-    con = "test_species.txt", useBytes = TRUE)
-sp <- readLines("test_species.txt", encoding = "UTF-8")
-res_CTPL <- CTPL(sp)
-```
-
 ## `count_taxa()` :统计CTPL结果的科、属、种数量
 
 调用方式：
