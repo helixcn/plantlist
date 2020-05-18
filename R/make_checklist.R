@@ -57,7 +57,7 @@ function( checklist_dat = NULL,
                 ) 
                 ), collapse = "")
                 )
-                temp_genera_list <- unique(temp_family_dat$GENUS)
+                temp_genera_list <- sort(unique(temp_family_dat$GENUS))
                 for(j in 1:length(temp_genera_list)){
                     temp_genera_dat <- subset(temp_family_dat, temp_family_dat$GENUS == temp_genera_list[j])
                     # Genus Title
@@ -69,10 +69,10 @@ function( checklist_dat = NULL,
                     )
                     )
 
-                    temp_species_list <- unique(temp_genera_dat$SPECIES_FULL)
+                    temp_species_list <- sort(unique(temp_genera_dat$SPECIES_FULL))
                     for(k in 1:length(temp_species_list)){
                         temp_species_dat <- subset(temp_genera_dat, temp_genera_dat$SPECIES_FULL == temp_species_list[k])
-                        main_text <- c(main_text, 
+                        main_text <- c(main_text, "", 
                                        c(# Species Chinese Name
                                            paste("**",unique(temp_species_dat$SPECIES_CN), "**", sep = "", collapse = ""), 
                                            "",
@@ -123,7 +123,7 @@ function( checklist_dat = NULL,
                 ) 
                 ), collapse = "")
                 )
-                temp_genera_list <- unique(temp_family_dat$GENUS)
+                temp_genera_list <- sort(unique(temp_family_dat$GENUS))
                 for(j in 1:length(temp_genera_list)){
                     temp_genera_dat <- subset(temp_family_dat, temp_family_dat$GENUS == temp_genera_list[j])
                     # Genus Title
@@ -135,12 +135,12 @@ function( checklist_dat = NULL,
                     )
                     )
 
-                    temp_species_list <- unique(temp_genera_dat$SPECIES_FULL)
+                    temp_species_list <- sort(unique(temp_genera_dat$SPECIES_FULL))
                     for(k in 1:length(temp_species_list)){
                         temp_species_dat <- subset(temp_genera_dat, temp_genera_dat$SPECIES_FULL == temp_species_list[k])
-                        main_text <- c(main_text, 
+                        main_text <- c(main_text, "", 
                                        c(# Species Chinese Name
-                                           paste("**",unique(temp_species_dat$SPECIES_CN), "**", sep = "", collapse = ""), 
+                                           paste("**", unique(temp_species_dat$SPECIES_CN), "**", sep = "", collapse = ""), 
                                            # Scientific Name
                                            # if(temp_species_dat$SPECIES_FULL == ""){
                                            #    paste("Error: Scientific Name Not Found")
@@ -180,13 +180,13 @@ function( checklist_dat = NULL,
                 ) 
                 ), collapse = "")
                 )
-                temp_genera_list <- unique(temp_family_dat$GENUS)
+                temp_genera_list <- sort(unique(temp_family_dat$GENUS))
                 for(j in 1:length(temp_genera_list)){
                     temp_genera_dat <- subset(temp_family_dat, temp_family_dat$GENUS == temp_genera_list[j])
-                    temp_species_list <- unique(temp_genera_dat$SPECIES_FULL)
+                    temp_species_list <- sort(unique(temp_genera_dat$SPECIES_FULL))
                     for(k in 1:length(temp_species_list)){
                         temp_species_dat <- subset(temp_genera_dat, temp_genera_dat$SPECIES_FULL == temp_species_list[k])
-                        main_text <- c(main_text, 
+                        main_text <- c(main_text, "", 
                                        c(# Species Chinese Name
                                            paste("**",unique(temp_species_dat$SPECIES_CN), "**", sep = "", collapse = ""), 
                                            # Scientific Name
