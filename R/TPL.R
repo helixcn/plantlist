@@ -1,12 +1,12 @@
-TPL <- function (plant.names = NULL) {    
+TPL <- function (plant.names = NULL) {
     options(stringsAsFactors = FALSE)
     if (is.null(plant.names)) {
         stop("At least one plant species or genus should be provided.")
     }
     get.genus <- function(x) {
         Cap <- function(x) {
-            paste(toupper(substring(x, 1, 1)), tolower(substring(x, 
-                2)), sep = "")
+            paste(toupper(substring(x, 1, 1)), tolower(substring(x,
+                                                                 2)), sep = "")
         }
         if (is.data.frame(x)) {
             x <- as.vector(x)
@@ -31,15 +31,34 @@ TPL <- function (plant.names = NULL) {
     orders_dat <- plantlist::orders_dat
     
     genus <- get.genus(plant.names)
-    genus <- data.frame(YOUR_SPECIES = plant.names, YOUR_GENUS = genus)
+    genus <-
+        data.frame(YOUR_SPECIES = plant.names, YOUR_GENUS = genus)
     
-    res1 <- merge(x = genus, y = genera_dat, by.x = "YOUR_GENUS", 
-        by.y = "GENUS", sort = FALSE, all.x = TRUE)
-
-    res <- merge(x = res1, y = orders_dat, by = "FAMILY",  
-        sort = FALSE, all.x = TRUE)
+    res1 <- merge(
+        x = genus,
+        y = genera_dat,
+        by.x = "YOUR_GENUS",
+        by.y = "GENUS",
+        sort = FALSE,
+        all.x = TRUE
+    )
     
-    return(data.frame(YOUR_SEARCH = res$YOUR_SPECIES, POSSIBLE_GENUS = res$YOUR_GENUS, 
-        FAMILY = res$FAMILY, FAMILY_NUMBER = res$FAMILY_NUMBER, ORDER = res$ORDER,  
-        GROUP = res$GROUP))
+    res <- merge(
+        x = res1,
+        y = orders_dat,
+        by = "FAMILY",
+        sort = FALSE,
+        all.x = TRUE
+    )
+    
+    return(
+        data.frame(
+            YOUR_SEARCH = res$YOUR_SPECIES,
+            POSSIBLE_GENUS = res$YOUR_GENUS,
+            FAMILY = res$FAMILY,
+            FAMILY_NUMBER = res$FAMILY_NUMBER,
+            ORDER = res$ORDER,
+            GROUP = res$GROUP
+        )
+    )
 }

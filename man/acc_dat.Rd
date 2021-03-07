@@ -5,7 +5,7 @@
 The accepted plant names from the Plant List
 }
 \description{
-The data frame contain the columns of the status of a scientific name from the Plant List.
+The data frame contains the columns of the status of a scientific name from the Plant List.
 }
 \usage{data("acc_dat")}
 \format{
