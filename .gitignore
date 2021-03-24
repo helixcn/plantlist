@@ -15,3 +15,5 @@ man/.DS_Store
 vignettes/.DS_Store
 R/.DS_Store
 .DS_Store
+.Rproj.user
+docs

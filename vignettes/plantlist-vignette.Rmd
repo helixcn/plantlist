@@ -1,5 +1,5 @@
 ---
-title: "用plantlist程序包查询和处理植物学名"
+title: "Searching and Processing Plant Scientific names using the plantlist package"
 author: "张金龙"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
