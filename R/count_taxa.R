@@ -16,10 +16,10 @@ count_taxa <-
         if (any(is.na(checklist_dat))) {
             warning(
                 paste(
-                    "Taxa '",
+                    "Taxa: '",
                     paste(checklist_dat$YOUR_SEARCH[is.na(checklist_dat$SPECIES)],
                           collapse = ", "),
-                    "' does not have full scientific name, ignored\n",
+                    "' do(es) not have full scientific name, ignored\n",
                     sep = ""
                 )
             )
@@ -29,13 +29,20 @@ count_taxa <-
         
         # Add a number to each group
         checklist_dat$GROUP <-
+          ifelse(
+            checklist_dat$GROUP == "Bryophytes",
+            paste("1", checklist_dat$GROUP),
+            checklist_dat$GROUP
+          )
+        
+        checklist_dat$GROUP <-
             ifelse(
                 checklist_dat$GROUP == "Ferns and lycophytes",
                 paste("2", checklist_dat$GROUP),
                 checklist_dat$GROUP
             )
         checklist_dat$GROUP <- ifelse(is.na(checklist_dat$GROUP),
-                                      "",                              checklist_dat$GROUP)
+                                      "", checklist_dat$GROUP)
         checklist_dat$GROUP <-
             ifelse(
                 checklist_dat$GROUP == "Gymnosperms",

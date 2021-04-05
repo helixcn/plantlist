@@ -18,15 +18,24 @@ make_checklist <-
         }
         # checklist_dat <- na.omit(checklist_dat)
         theme <- match.arg(theme)
+        
+        checklist_dat$GROUP <- ifelse(is.na(checklist_dat$GROUP),"", checklist_dat$GROUP)
         # Give each group a number
+        
+        checklist_dat$GROUP <-
+          ifelse(
+            checklist_dat$GROUP == "Bryophytes",
+            paste("1", checklist_dat$GROUP),
+            checklist_dat$GROUP
+          )
+        
         checklist_dat$GROUP <-
             ifelse(
                 checklist_dat$GROUP == "Ferns and lycophytes",
                 paste("2", checklist_dat$GROUP),
                 checklist_dat$GROUP
             )
-        checklist_dat$GROUP <- ifelse(is.na(checklist_dat$GROUP),
-                                      "",                              checklist_dat$GROUP)
+
         checklist_dat$GROUP <-
             ifelse(
                 checklist_dat$GROUP == "Gymnosperms",
@@ -44,8 +53,7 @@ make_checklist <-
             gsub("[^0-9]", "", checklist_dat$FAMILY_NUMBER)
         
         # parse_taxa
-        parsed_taxa_df <-
-            unique(parse_taxa(na.omit(checklist_dat$SPECIES_FULL)))
+        parsed_taxa_df <- unique(parse_taxa(na.omit(checklist_dat$SPECIES_FULL)))
         checklist_dat2 <- merge(checklist_dat,
                                 parsed_taxa_df,
                                 by.x = "SPECIES_FULL",
@@ -57,6 +65,7 @@ make_checklist <-
             checklist_dat2$FAMILY_NUMBER,
             checklist_dat2$SPECIES_FULL
         ),]
+        
         checklist_dat3[is.na(checklist_dat3)] <- ""
         
         main_text <- character()
