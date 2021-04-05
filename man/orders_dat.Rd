@@ -17,9 +17,7 @@ Order-Family Database for higher plants, including bryophytes, ferns and lycophy
     \item{\code{GROUP}}{a character vector}
   }
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
+
 \source{
 
 http://www.mobot.org/MOBOT/research/APweb/top/synonymyfamilies.html
@@ -28,11 +26,13 @@ For bryophytes
 http://duocet.ibiodiversity.net/index.php?title=%E5%A4%9A%E8%AF%86%E8%8B%94%E8%97%93%E7%B3%BB%E7%BB%9F
 
 }
+
 \references{
 
 Mark W. Chase, Mark W. Chase and James L. Reveal. 2009. A Phylogenetic Classification of the Land Plants to Accompany APG III. Botanical Journal of the Linnean Society 161(2):122-127.
 
 }
+
 \examples{
 data(orders_dat)
 
