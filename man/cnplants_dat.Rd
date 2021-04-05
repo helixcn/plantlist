@@ -9,7 +9,7 @@ The Chinese Plants Database from Various sources
 }
 \usage{data("cnplants_dat")}
 \format{
-  A data frame with 54748 observations on the following 14 variables.
+  A data frame with 49479 observations on the following 15 variables.
   \describe{
     \item{\code{SPECIES_CN}}{a character vector}
     \item{\code{SPECIES}}{a character vector}
@@ -28,11 +28,12 @@ The Chinese Plants Database from Various sources
     \item{\code{ALTITUDE}}{a character vector}
   }
 }
+
 \source{
- Compiled from various sources. See \url{https://github.com/helixcn/plantlist_data}
+Compiled from various sources. See https://github.com/helixcn/plantlist_data
 }
 \references{
-   \url{https://github.com/helixcn/plantlist_data}
+https://github.com/helixcn/plantlist_data
 }
 \examples{
 data(cnplants_dat)
