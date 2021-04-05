@@ -60,8 +60,7 @@ CTPL <- function(taxa = NULL,
     res_empty <- t(data.frame(rep(NA, ncol(cnplants_dat[1, ]))))
     colnames(res_empty) <- colnames(cnplants_dat)
     
-    rep_id <-
-        c() # Count number of times the element needs to repeat.
+    rep_id <- c() # Count number of times the element needs to repeat.
     for (i in 1:length(YOUR_SEARCH)) {
         selected_index <-
             SPECIES_CN %in% YOUR_SEARCH[i] | SPECIES %in% YOUR_SEARCH[i]
@@ -90,7 +89,7 @@ CTPL <- function(taxa = NULL,
     row.names(res) <- 1:nrow(res)
     if (print_as_list) {
         if (nrow(res) > 6) {
-            cat("Note: too many rows to show, only the first few were printed")
+            cat("Note: too many rows to show, only the first one is shown.\n\n")
         }
         print.listof(head(res)) # Only the first few species will be printed
         return(invisible(res))
