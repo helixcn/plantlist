@@ -1,13 +1,19 @@
 Package: plantlist
 Type: Package
 Title: Looking Up the Status of Plant Scientific Names based on The
-        Plant List Database and making checklists of plants
-Version: 0.7.1
-Date: 2021-04-05
-Authors@R: person("Jinlong", "Zhang", role = c("aut", "cre"),
-		     email = "jinlongzhang01@gmail.com")
-Author: Jinlong Zhang [aut, cre]
-Maintainer: Jinlong Zhang <jinlongzhang01@gmail.com>
+        Plant List Database, Search the Chinese Names and Making checklists of plants
+Version: 0.7.2
+Date: 2021-04-07
+Authors@R: c(person("Jinlong", "Zhang", role = c("aut", "cre"), email = "jinlongzhang01@gmail.com"),
+               person("Bing", "Liu", role = "aut", email = "liubing@ibcas.ac.cn"),
+               person("Su", "Liu", role = "aut"),
+               person("Zhenhao", "Feng", role = "aut"),
+               person("Kaiwen", "Jiang", role = "aut"))
+Author: Jinlong Zhang [aut, cre],
+  Bing Liu[aut],
+  Su Liu[aut],
+  Zhenhao Feng[aut],
+  Kaiwen Jiang[aut]
 Description: Miscellaneous functions for looking up systematic position (Family, Order, Family Number) for higher plants, compiling check list, counting the number taxa under each category based on a curated database.
 License: GPL-2
 Depends: R (>= 3.5.0)

@@ -1,6 +1,6 @@
 ## Welcome to the Homepage of plantlist
 
-plantlist is an R package for checking the status of a scientific name for higher plants. Its database is based on The Plant List Website (Ver. 1.1).
+plantlist is an R package for checking the status of a scientific name of higher plants based on The Plant List Version 1.1 (http://www.theplantlist.org/). It also has functions for Searching the Chinese Names and Making checklist of plants.
 
 ### How to install?
 
@@ -61,6 +61,29 @@ res <- TPL(sp)
 taxa.table(res)
 ```
 
-For more help, please look at the manual for each function.
+For more information, please refer to the manual for each function.
 
 Please feel free to send an email to the package maintainer **Jinlong Zhang** if you have any question or comments about this package.
+
+
+# Citation
+
+From 0.7.2 onwards, the plantlist package uses a database of Chinese Names compiled by Dr. **LIU Bing** (Institute of Botany, Chinese Academy of Sciences), Dr. **LIU Su** (The Shanghai Chenshan Botanical Garden), Mr. **FENG Zhenhao** and Mr. **JIANG Kaiwen** (Southwest Forestry University) *et al.*. The maintainer would like to thank the authors for allowing the usage of their database. Any bugs/errors in the R functions, help files (Rd files) or the vignettes are the responsibility of the package maintainer, not the author of the database.
+
+For more information, please refer to http://duocet.ibiodiversity.net/
+
+If you use `plantlist` in your study, please cite it:
+
+- Jinlong Zhang, Bing Liu, Su Liu, Zhenhao Feng and Kaiwen Jiang
+  **(year)**. plantlist: Looking Up the Status of Plant Scientific Names
+  based on The Plant List Database, Searching the Chinese Names and
+  Making checklists of plants. R package version **(X.X.X)**
+  https://github.com/helixcn/plantlist/
+
+
+# Disclaimer
+
+Partially from the MIT license (https://opensource.org/licenses/MIT).
+
+"THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+
