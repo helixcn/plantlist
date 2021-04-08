@@ -3,7 +3,7 @@ CTPL <- function(taxa = NULL,
     options(stringsAsFactors = FALSE)
     if (length(taxa) == 1) {
         if (any(unique(taxa) == "")) {
-            stop("taxa is empty, please provide provide scientific or Chinese name(s)")
+            stop("taxa is empty, please provide scientific or Chinese name(s)")
         }
     }
     if (any(taxa == "" | is.null(taxa))) {
