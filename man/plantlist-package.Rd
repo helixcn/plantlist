@@ -6,7 +6,7 @@
 Looking Up the Status of Plant Scientific Names based on The Plant List Database
 }
 \description{
-Looking up the status of scientific names based on the Plant List Database and search the Families for genus. 
+Looking up the status of scientific names based on the Plant List Database and search the Families for genus.
 }
 \details{
 \packageDESCRIPTION{plantlist}
@@ -24,9 +24,9 @@ Maintainer: Jinlong Zhang <jinlongzhang01@gmail.com>
 
 TPL("Carex")
 TPL("Cherry")
-splist <- c( "Ranunculus japonicus", "Hepatica henryi", 
-              "Heracleum acuminatum", "Solanum nigrum", 
-              "Punica sp.", "Machilus", "Today", "####" ) 
+splist <- c("Ranunculus japonicus", "Hepatica henryi",
+            "Heracleum acuminatum", "Solanum nigrum",
+            "Punica sp.", "Machilus", "Today", "####" )
 res <- TPL(splist)
 taxa.table(res)
 
