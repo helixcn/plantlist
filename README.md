@@ -6,7 +6,7 @@ plantlist is an R package for checking the status of a scientific name of higher
 
 ```R
 library(devtools)
-install_github("helixcn/plantlist")
+install_github("helixcn/plantlist", build_vignettes = TRUE)
 ```
 
 If you haven't had devtools installed, please install it by typing
