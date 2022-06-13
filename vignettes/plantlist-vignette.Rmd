@@ -232,9 +232,7 @@ make_checklist(res_CTPL)
 
 如果您使用了plantlist程序包，请通过以下方式引用（请根据版本和日期做相应修改）：
 
-- Jinlong Zhang (2020). plantlist: Looking Up the Status of Plant Scientific
-  Names based on The Plant List Database. R package version 0.6.5.
-  https://github.com/helixcn/plantlist/
+- Jinlong Zhang, Bing Liu, Su Liu, Zhenhao Feng and Kaiwen Jiang (year). _plantlist: Looking Up the Status of Plant Scientific Names based on The Plant List Database, Searching the Chinese Names and Making checklists of plants_ R package version (X.X.X) https://github.com/helixcn/plantlist/
 
 # 致谢
 
