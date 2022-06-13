@@ -10,12 +10,6 @@ Database}
 Looking up the status of scientific names based on the Plant List Database
 and search the Families for genus.
 }
-\details{
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_DESCRIPTION(\"#1\")}",
-"plantlist")\Sexpr{tools:::Rd_package_DESCRIPTION("plantlist")}
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_indices(\"#1\")}",
-"plantlist")\Sexpr{tools:::Rd_package_indices("plantlist")}
-}
 \examples{
 
 

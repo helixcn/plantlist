@@ -11,15 +11,15 @@
 #' @docType data
 #' @format A data frame with 594102 observations on the following 5 variables.
 #' \describe{ 
-#' \item{list("ID")}{a character vector representing the ID of the
+#' \item{ID}{a character vector representing the ID of the
 #' name from the plant list database} 
-#' \item{list("FAMILY")}{a character vector
+#' \item{FAMILY}{a character vector
 #' representing the family of this scientific name}
-#' \item{list("SCIENTIFIC_NAME")}{a character vector representing the
+#' \item{SCIENTIFIC_NAME}{a character vector representing the
 #' scientific name} 
-#' \item{list("AUTHOR")}{a character vector representing the
+#' \item{AUTHOR}{a character vector representing the
 #' author of the scientific name} 
-#' \item{list("STATUS")}{a character vector
+#' \item{STATUS}{a character vector
 #' representing the status of the scientific name} }
 #' 
 #' @references The Plantlist Website \url{http://www.theplantlist.org/}
@@ -43,19 +43,23 @@ NULL
 #' @name cnplants_dat
 #' @docType data
 #' @format A data frame with 49479 observations on the following 15 variables.
-#' \describe{ \item{list("SPECIES_CN")}{a character vector}
-#' \item{list("SPECIES")}{a character vector} \item{list("SPECIES_FULL")}{a
-#' character vector} \item{list("GENUS")}{a character vector}
-#' \item{list("GENUS_AUTHOR")}{a character vector} \item{list("GENUS_CN")}{a
-#' character vector} \item{list("FAMILY")}{a character vector}
-#' \item{list("FAMILY_CN")}{a character vector} \item{list("FAMILY_NUMBER")}{a
-#' character vector showing the APGIII numbers for Angiosperms, and the
-#' Christenhusz Family Number for Gymnosperms and ferns} \item{list("ORDER")}{a
-#' character vector} \item{list("GROUP")}{a character vector}
-#' \item{list("IUCN_CHINA")}{a character vector}
-#' \item{list("ENDEMIC_TO_CHINA")}{a character vector}
-#' \item{list("PROVINTIAL_DISTRIBUTION")}{a character vector}
-#' \item{list("ALTITUDE")}{a character vector} }
+#' \describe{ 
+#' \item{SPECIES_CN}{a character vector}
+#' \item{SPECIES}{a character vector} 
+#' \item{SPECIES_FULL}{a character vector} 
+#' \item{GENUS}{a character vector}
+#' \item{GENUS_AUTHOR}{a character vector} 
+#' \item{GENUS_CN}{a character vector} 
+#' \item{FAMILY}{a character vector}
+#' \item{FAMILY_CN}{a character vector} 
+#' \item{FAMILY_NUMBER}{a character vector showing the APGIII numbers for Angiosperms, and the
+#'       Christenhusz Family Number for Gymnosperms and ferns} 
+#' \item{ORDER}{a character vector} 
+#' \item{GROUP}{a character vector}
+#' \item{IUCN_CHINA}{a character vector}
+#' \item{ENDEMIC_TO_CHINA}{a character vector}
+#' \item{PROVINTIAL_DISTRIBUTION}{a character vector}
+#' \item{ALTITUDE}{a character vector} }
 #' @references https://github.com/helixcn/plantlist_data
 #' @source Compiled from various sources. See
 #' https://github.com/helixcn/plantlist_data
@@ -79,8 +83,9 @@ NULL
 #' @name genera_dat
 #' @docType data
 #' @format A data frame with 24814 observations on the following 2 variables.
-#' \describe{ \item{list("GENUS")}{a character vector} \item{list("FAMILY")}{a
-#' character vector} }
+#' \describe{ 
+#' \item{GENUS}{a character vector} 
+#' \item{FAMILY}{a character vector} }
 #' @source the Plant List Website http://www.theplantlist.org/1.1/browse/-/-/,
 #' with modifications.
 #' @keywords datasets
@@ -103,9 +108,11 @@ NULL
 #' @name orders_dat
 #' @docType data
 #' @format A data frame with 1879 observations on the following 4 variables.
-#' \describe{ \item{list("FAMILY")}{a character vector} \item{list("ORDER")}{a
-#' character vector} \item{list("FAMILY_NUMBER")}{a character vector}
-#' \item{list("GROUP")}{a character vector} }
+#' \describe{ 
+#' \item{FAMILY}{a character vector} 
+#' \item{ORDER}{a character vector} 
+#' \item{FAMILY_NUMBER}{a character vector}
+#' \item{GROUP}{a character vector} }
 #' @references
 #' 
 #' Mark W. Chase, Mark W. Chase and James L. Reveal. 2009. A Phylogenetic
@@ -134,11 +141,6 @@ NULL
 #' 
 #' Looking up the status of scientific names based on the Plant List Database
 #' and search the Families for genus.
-#' 
-#' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_DESCRIPTION(\"#1\")}",
-#' "plantlist")\Sexpr{tools:::Rd_package_DESCRIPTION("plantlist")}
-#' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_indices(\"#1\")}",
-#' "plantlist")\Sexpr{tools:::Rd_package_indices("plantlist")}
 #' 
 #' @name plantlist-package
 #' @aliases plantlist-package plantlist
@@ -170,20 +172,26 @@ NULL
 #' This data frame contains the synonyms for the scientific names from the
 #' Plant List.
 #' 
-#' Please refere to usage section
+#' Please refer to the usage section
 #' 
 #' @name syn_dat
 #' @docType data
 #' @format A data frame with 703949 observations on the following 6 variables.
-#' \describe{ \item{list("ID")}{a character vector representing the ID in the
-#' Plant List Database} \item{list("FAMILY")}{a character vector representing
-#' the Family of the species} \item{list("SCIENTIFIC_NAME")}{a character vector
-#' representing the scientific name} \item{list("AUTHOR")}{a character vector
-#' representing the authorship of this scientific name} \item{list("STATUS")}{a
+#' \describe{ 
+#' \item{ID}{a character vector representing the ID in the
+#' Plant List Database} 
+#' \item{FAMILY}{a character vector representing
+#' the Family of the species} 
+#' \item{SCIENTIFIC_NAME}{a character vector
+#' representing the scientific name} 
+#' \item{AUTHOR}{a character vector
+#' representing the authorship of this scientific name} 
+#' \item{STATUS}{a
 #' character vector representing the validity of this scientific name}
-#' \item{list("ACCEPTED_ID")}{a character vector representing the ID of the
+#' \item{ACCEPTED_ID}{a character vector representing the ID of the
 #' accepted name for this scientific name} }
-#' @references The Plantlist Website \url{http://www.theplantlist.org/}
+#' @references The Plantlist Website 
+#' \url{http://www.theplantlist.org/}
 #' @source The embbed database is available at http://pan.baidu.com/s/1hqHrW9I
 #' @keywords datasets
 #' @examples
@@ -191,6 +199,4 @@ NULL
 #' data(syn_dat)
 #' 
 NULL
-
-
 
