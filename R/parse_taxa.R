@@ -1,25 +1,62 @@
+#' Parsing scientific names
+#'
+#' Parse a scientific name into different parts, namely: (1)genus, (2)species,
+#' (2)author, (3)infra-specific rank, i.e. var., f., subsp., (4)infra-specific
+#' epithet, (5)author of infra-specific rank
+#'
+#' The details are explained in the value section
+#'
+#' @param taxa A character string, usually the scientific name of a plant
+#' species
+#' @return A data.frame containing the following columns:
+#' \item{TAXON_PARSED}{The input taxa name}
+#' \item{GENUS_PARSED}{The genus:
+#' letters before the first white space}
+#' \item{SPECIES_PARSED}{The specific
+#' epithet: letters after the first white space but before the second white
+#' spaccce}
+#' \item{AUTHOR_OF_SPECIES_PARSED}{the Author of this taxa, if no
+#' var./f./subsp. is fouund with, AUTHOR_OF_SPECIES_PARSED will include all
+#' letters (including whitespace) from the second gap onwards }
+#' \item{INFRASPECIFIC_RANK_PARSED}{either f., var. or subsp., if these values
+#' were detected in the taxa name. If neighther f., var. or subsp. is not
+#' detected, this field will be left empty}
+#' \item{INFRASPECIFIC_EPITHET_PARSED}{if either f., var. or subsp. is
+#' detected, letters after the "INFRASPECIFIC_RANK_PARSED" but before a white
+#' space will be extracted as INFRASPECIFIC_EPITHET_PARSED. If neighther f.,
+#' var. or subsp. is not detected, this field will be left empty }
+#' \item{AUTHOR_OF_INFRASPECIFIC_RANK_PARSED}{All the letters after
+#' INFRASPECIFIC_EPITHET_PARSED will be treated as
+#' AUTHOR_OF_INFRASPECIFIC_RANK_PARSED. If neighther f., var. or subsp. is not
+#' detected, this field will be left empty }
+#' @author Jinlong Zhang
+#' @seealso \code{\link{status}}, \code{\link{make_checklist}}
+#' @examples
+#'
+#' parse_taxa("Epirixanthes elongata Blume")
+#' parse_taxa("Epirixanthes elongata")
+#'
+#' @export parse_taxa
 parse_taxa <-
   function(taxa) {
     parse_taxon <- function(taxon) {
       replace_space <- function(x) {
-        gsub(
-          "[[:space:]]+",
-          " ",
-          gsub("^[[:space:]]+|[[:space:]]+$", "", x)
-        )
+        gsub("[[:space:]]+",
+             " ",
+             gsub("^[[:space:]]+|[[:space:]]+$", "", x))
       }
-
+      
       if (length(taxon) > 1) {
         stop("Only one taxon allowed")
       }
-
+      
       GENUS <- ""
       SPECIES <- ""
       AUTHOR_OF_SPECIES <- ""
       INFRASPECIFIC_RANK <- ""
       INFRASPECIFIC_EPITHET <- ""
       AUTHOR_OF_INFRASPECIFIC_RANK <- ""
-
+      
       taxon <- gsub(" +", " ", replace_space(taxon))
       ### Parse Genus
       gap1 <- regexpr(pattern = " ", text = taxon)
@@ -29,32 +66,28 @@ parse_taxa <-
       part1 <-
         replace_space(substr(taxon, start = gap1 + 1, stop = nchar(taxon)))
       gap2 <- regexpr(pattern = " ", text = part1)
-
+      
       ### Parse Species
       if (gap2 < 0) {
         SPECIES <-
-          replace_space(substr(
-            part1,
-            start = gap2 + 1,
-            stop = nchar(part1)
-          ))
+          replace_space(substr(part1,
+                               start = gap2 + 1,
+                               stop = nchar(part1)))
         author_temp <- ""
       } else {
         SPECIES <-
           replace_space(substr(part1, start = 1, stop = (gap2 - 1)))
         author_temp <-
-          replace_space(substr(
-            part1,
-            start = gap2 + 1,
-            stop = nchar(part1)
-          ))
+          replace_space(substr(part1,
+                               start = gap2 + 1,
+                               stop = nchar(part1)))
       }
       AUTHOR_OF_SPECIES <- author_temp
-
+      
       gap3 <- regexpr(pattern = " ", text = author_temp)
       if (grepl("var\\. ", taxon) |
-        grepl("subsp\\. ", taxon) |
-        grepl(" f\\. ", taxon)) {
+          grepl("subsp\\. ", taxon) |
+          grepl(" f\\. ", taxon)) {
         if (grepl("var\\. ", taxon)) {
           INFRASPECIFIC_RANK <- "var."
           gap_var <-
@@ -75,7 +108,9 @@ parse_taxa <-
           if (grepl("subsp\\. ", taxon)) {
             INFRASPECIFIC_RANK <- "subsp."
             gap_subsp <-
-              regexpr(pattern = "subsp\\. ", text = author_temp) + nchar("subsp.")
+              regexpr(pattern = "subsp\\. ", 
+                      text = author_temp) + 
+              nchar("subsp.")
             AUTHOR_OF_SPECIES <-
               replace_space(substr(
                 author_temp,
@@ -90,32 +125,27 @@ parse_taxa <-
               ))
           } else {
             if (substr(author_temp,
-              start = 1,
-              stop = nchar("f.")
-            ) == "f.") {
+                       start = 1,
+                       stop = nchar("f.")) == "f.") {
               INFRASPECIFIC_RANK <- "f."
               gap_f <-
-                regexpr(pattern = "f\\. ", text = author_temp) + nchar("f.")
+                regexpr(pattern = "f\\. ", 
+                        text = author_temp) + nchar("f.")
               position_f <-
-                regexpr(pattern = "f\\.", text = taxon)[[1]][1] ### the first f. is the forma
+                regexpr(pattern = "f\\.", 
+                        text = taxon)[[1]][1] ### the first f. is the forma
               position_white_space <-
                 regexpr(pattern = "", text = taxon)[[1]]
               location_species_end <-
                 position_white_space[2]
               AUTHOR_OF_SPECIES_temp <-
-                replace_space(
-                  substr(
-                    taxon,
-                    start = location_species_end,
-                    stop = position_f - 1
-                  )
-                )
+                replace_space(substr(taxon,
+                                     start = location_species_end,
+                                     stop = position_f - 1))
               AUTHOR_OF_SPECIES <-
-                ifelse(
-                  is.na(AUTHOR_OF_SPECIES_temp),
-                  "",
-                  AUTHOR_OF_SPECIES_temp
-                )
+                ifelse(is.na(AUTHOR_OF_SPECIES_temp),
+                       "",
+                       AUTHOR_OF_SPECIES_temp)
               part_INFRASP_EP_AUTHOR_OF_INFRASP <-
                 replace_space(substr(
                   author_temp,
@@ -137,10 +167,11 @@ parse_taxa <-
       } else {
         part_INFRASP_EP_AUTHOR_OF_INFRASP <- ""
       }
-
+      
       ## part_INFRASP_EP_AUTHOR_OF_INFRASP <- replace_space(substr(author_temp, start = gap_var_or_subsp + 1, stop = nchar(author_temp)))
       gap4 <-
-        regexpr(pattern = " ", text = part_INFRASP_EP_AUTHOR_OF_INFRASP)
+        regexpr(pattern = " ", 
+                text = part_INFRASP_EP_AUTHOR_OF_INFRASP)
       if (gap4 > 0) {
         INFRASPECIFIC_EPITHET <-
           replace_space(substr(
@@ -161,11 +192,12 @@ parse_taxa <-
             start = 1,
             stop = nchar(part_INFRASP_EP_AUTHOR_OF_INFRASP)
           ))
-        if (INFRASPECIFIC_EPITHET %in% strsplit(AUTHOR_OF_SPECIES, " ")[[1]]) {
+        if (INFRASPECIFIC_EPITHET %in% strsplit(AUTHOR_OF_SPECIES, 
+                                                " ")[[1]]) {
           INFRASPECIFIC_EPITHET <- ""
         }
       }
-
+      
       if (!grepl(" ", taxon)) {
         GENUS <- taxon
         SPECIES <- ""
@@ -174,7 +206,7 @@ parse_taxa <-
         INFRASPECIFIC_EPITHET <- ""
         AUTHOR_OF_INFRASPECIFIC_RANK <- ""
       }
-
+      
       res <- c(
         taxon,
         GENUS,
@@ -195,8 +227,9 @@ parse_taxa <-
       )
       return(res)
     }
-
+    
     res <-
-      data.frame(t(sapply(taxa, parse_taxon, USE.NAMES = FALSE)), stringsAsFactors = FALSE)
+      data.frame(t(sapply(taxa, parse_taxon, USE.NAMES = FALSE)), 
+                 stringsAsFactors = FALSE)
     return(res)
   }

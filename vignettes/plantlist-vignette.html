@@ -12,9 +12,9 @@
 
 <meta name="author" content="张金龙" />
 
-<meta name="date" content="2020-05-10" />
+<meta name="date" content="2022-06-13" />
 
-<title>用plantlist程序包查询和处理植物学名</title>
+<title>Searching and Processing Plant Scientific names using the plantlist package</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -30,12 +30,30 @@ document.addEventListener('DOMContentLoaded', function(e) {
 });
 </script>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -118,6 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -313,9 +332,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">用plantlist程序包查询和处理植物学名</h1>
+<h1 class="title toc-ignore">Searching and Processing Plant Scientific
+names using the plantlist package</h1>
 <h4 class="author">张金龙</h4>
-<h4 class="date">2020-05-10</h4>
+<h4 class="date">2022-06-13</h4>
 
 
 
@@ -323,8 +343,11 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="plantlist的主要功能" class="section level2">
 <h2>plantlist的主要功能</h2>
 <ol style="list-style-type: decimal">
-<li><p>批量查询植物科属，内置的数据主要来源于The Plant List网站 ( www.theplantlist.org/ )，其中被子植物采用APGIII分类系统，同时提供维管植物每个科的编号，可用于植物标本管理，方便编纂植物名录等。</p></li>
-<li><p>直接生成科/属/种的列表, 以便导入Phylomatic, V.PhyloMaker等软件生成进化树</p></li>
+<li><p>批量查询植物科属，内置的数据主要来源于The Plant List网站 (
+www.theplantlist.org/
+)，其中被子植物采用APGIII分类系统，同时提供维管植物每个科的编号，可用于植物标本管理，方便编纂植物名录等。</p></li>
+<li><p>直接生成科/属/种的列表, 以便导入Phylomatic,
+V.PhyloMaker等软件生成进化树</p></li>
 <li><p>用中文名批量查询植物学名以及科属</p></li>
 <li><p>查询学名的接受状态以及完整学名等</p></li>
 <li><p>制作不同风格的中文植物名录Markdown源文件</p></li>
@@ -354,64 +377,75 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="plantlist包内的函数" class="section level2">
 <h2>plantlist包内的函数</h2>
 <ul>
-<li><p><code>TPL()</code> 用学名查询目、科、属以及科在分类系统中的编号</p></li>
-<li><p><code>taxa.table()</code> 基于TPL查询结果制作科、属、种列表，以便用Phylomatic软件建立进化树</p></li>
-<li><p><code>status()</code> 查询每个学名在The Plant List 1.1数据库中的接受状态（该数据库已经放在程序包中）</p></li>
-<li><p><code>CTPL()</code> 查询中国记录植物的科、属、分布、海拔、IUCN等级等</p></li>
-<li><p><code>count_taxa</code> 统计<code>CTPL</code>查询结果出现的科、属、种等数量</p></li>
-<li><p><code>make_checklist</code> 根据<code>CTPL</code>的查询结果，制作三种风格的植物名录（按照系统发育顺序排列）</p></li>
+<li><p><code>TPL()</code>
+用学名查询目、科、属以及科在分类系统中的编号</p></li>
+<li><p><code>taxa.table()</code>
+基于TPL查询结果制作科、属、种列表，以便用Phylomatic软件建立进化树</p></li>
+<li><p><code>status()</code> 查询每个学名在The Plant List
+1.1数据库中的接受状态（该数据库已经放在程序包中）</p></li>
+<li><p><code>CTPL()</code>
+查询中国记录植物的科、属、分布、海拔、IUCN等级等</p></li>
+<li><p><code>count_taxa</code>
+统计<code>CTPL</code>查询结果出现的科、属、种等数量</p></li>
+<li><p><code>make_checklist</code>
+根据<code>CTPL</code>的查询结果，制作三种风格的植物名录（按照系统发育顺序排列）</p></li>
 </ul>
 </div>
 <div id="内置数据" class="section level2">
 <h2>内置数据</h2>
 <ul>
-<li><p><code>acc_dat</code>: The Plant List 1.1 网站上的所有接受名</p></li>
-<li><p><code>cnplants_dat</code>: 《中国植物名录》及每个种的科、属、分布、海拔、中国IUCN等级以及特有性等数据</p></li>
-<li><p><code>genera_dat</code>: The Plant List 1.1 网站上的所有属名列表，因源数据有一些错误，绝大部分已经修订。</p></li>
-<li><p><code>orders_dat</code>: Angiosperm Phylogeny Website (www.mobot.org/MOBOT/research/APweb/) 提供的各科所属的目。</p></li>
-<li><p><code>syn_dat</code>: The Plant List 1.1 网站的异名数据库</p></li>
+<li><p><code>acc_dat</code>: The Plant List 1.1
+网站上的所有接受名</p></li>
+<li><p><code>cnplants_dat</code>:
+《中国植物名录》及每个种的科、属、分布、海拔、中国IUCN等级以及特有性等数据</p></li>
+<li><p><code>genera_dat</code>: The Plant List 1.1
+网站上的所有属名列表，因源数据有一些错误，绝大部分已经修订。</p></li>
+<li><p><code>orders_dat</code>: Angiosperm Phylogeny Website
+(www.mobot.org/MOBOT/research/APweb/) 提供的各科所属的目。</p></li>
+<li><p><code>syn_dat</code>: The Plant List 1.1
+网站的异名数据库</p></li>
 </ul>
 </div>
 <div id="安装" class="section level1">
 <h1>安装</h1>
 <p>由于plantlist最新版本的源代码保存在github (<a href="https://www.github.com/helixcn/plantlist" class="uri">https://www.github.com/helixcn/plantlist</a>)。</p>
 <p>安装命令如下：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;helixcn/plantlist&quot;</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;helixcn/plantlist&quot;</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="用法" class="section level1">
 <h1>用法</h1>
 <div id="tpl根据拉丁名查询目科属及科的编号" class="section level2">
 <h2><code>TPL()</code>:根据拉丁名，查询目、科、属及科的编号</h2>
 <p><code>TPL</code>函数输入的数据必须是字符串向量。可以查询科、属、种的相应信息，但并不会提示学名是否为接受名。要查询学名是否为接受名，请用<code>status()</code>函数。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(plantlist)</span></code></pre></div>
-<pre><code>## This is plantlist 0.6.5.</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">TPL</span>(<span class="st">&quot;Carex&quot;</span>) <span class="co"># 薹草属</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plantlist)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TPL</span>(<span class="st">&quot;Carex&quot;</span>) <span class="co"># 薹草属</span></span></code></pre></div>
 <pre><code>##   YOUR_SEARCH POSSIBLE_GENUS     FAMILY FAMILY_NUMBER  ORDER       GROUP
 ## 1       Carex          Carex Cyperaceae    APGIII_099 Poales Angiosperms</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">TPL</span>(<span class="st">&quot;Apple&quot;</span>) <span class="co"># 苹果</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TPL</span>(<span class="st">&quot;Apple&quot;</span>) <span class="co"># 苹果</span></span></code></pre></div>
 <pre><code>##   YOUR_SEARCH POSSIBLE_GENUS FAMILY FAMILY_NUMBER ORDER GROUP
 ## 1       Apple          Apple   &lt;NA&gt;          &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>splist &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ranunculus japonicus&quot;</span>, </span>
-<span id="cb8-2"><a href="#cb8-2"></a>            <span class="st">&quot;Solanum nigrum&quot;</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>            <span class="st">&quot;Punica sp.&quot;</span>, </span>
-<span id="cb8-4"><a href="#cb8-4"></a>            <span class="st">&quot;Machilus&quot;</span>, </span>
-<span id="cb8-5"><a href="#cb8-5"></a>            <span class="st">&quot;Today&quot;</span>, </span>
-<span id="cb8-6"><a href="#cb8-6"></a>            <span class="st">&quot;####&quot;</span> )            <span class="co">### 查询多个种</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>res &lt;-<span class="st"> </span><span class="kw">TPL</span>(splist)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>splist <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ranunculus japonicus&quot;</span>, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Solanum nigrum&quot;</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Punica sp.&quot;</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Machilus&quot;</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Today&quot;</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;####&quot;</span> )            <span class="do">### 查询多个种</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">TPL</span>(splist)</span></code></pre></div>
 </div>
 <div id="taxa.table-基于tpl查询结果制作科属种列表" class="section level2">
-<h2><code>taxa.table()</code> :基于<code>TPL</code>查询结果制作科、属、种列表</h2>
+<h2><code>taxa.table()</code>
+:基于<code>TPL</code>查询结果制作科、属、种列表</h2>
 <p>查询结果多用于Phylomatic或V.PhyloMaker等软件构建进化树。示例代码如下：</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">library</span>(plantlist)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>sp &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;Ranunculus japonicus&quot;</span>, </span>
-<span id="cb9-3"><a href="#cb9-3"></a>         <span class="st">&quot;Anemone udensis&quot;</span>,</span>
-<span id="cb9-4"><a href="#cb9-4"></a>         <span class="st">&quot;Ranunculus repens&quot;</span>,</span>
-<span id="cb9-5"><a href="#cb9-5"></a>         <span class="st">&quot;Ranunculus chinensis&quot;</span>,</span>
-<span id="cb9-6"><a href="#cb9-6"></a>         <span class="st">&quot;Solanum nigrum&quot;</span>,</span>
-<span id="cb9-7"><a href="#cb9-7"></a>         <span class="st">&quot;Punica sp.&quot;</span> )</span>
-<span id="cb9-8"><a href="#cb9-8"></a>res &lt;-<span class="st"> </span><span class="kw">TPL</span>(sp)</span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="kw">taxa.table</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plantlist)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sp <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;Ranunculus japonicus&quot;</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Anemone udensis&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Ranunculus repens&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Ranunculus chinensis&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Solanum nigrum&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Punica sp.&quot;</span> )</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">TPL</span>(sp)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">taxa.table</span>(res)</span></code></pre></div>
 <pre><code>## [1] &quot;Ranunculaceae/Ranunculus/Ranunculus_japonicus&quot;
 ## [2] &quot;Ranunculaceae/Ranunculus/Ranunculus_repens&quot;   
 ## [3] &quot;Ranunculaceae/Ranunculus/Ranunculus_chinensis&quot;
@@ -420,32 +454,35 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## [6] &quot;Lythraceae/Punica/Punica_sp.&quot;</code></pre>
 </div>
 <div id="status-查询每个学名在the-plant-list-1.1-本程序包内置数据-的接受状态" class="section level2">
-<h2><code>status()</code> :查询每个学名在The Plant List 1.1 (本程序包内置数据) 的接受状态</h2>
+<h2><code>status()</code> :查询每个学名在The Plant List 1.1
+(本程序包内置数据) 的接受状态</h2>
 <p>函数参数:</p>
 <p><code>status(species =NA, exact =TRUE, spell_error_max =NULL)</code></p>
-<p><code>status</code>函数可以查询变种var.、亚种 subsp.以及变型f.是否接受等信息</p>
+<p><code>status</code>函数可以查询变种var.、亚种
+subsp.以及变型f.是否接受等信息</p>
 <ul>
 <li><p><code>species</code>为输入的字符串向量</p></li>
 <li><p><code>exact</code>表示是否进行精确匹配，如果选择<code>FALSE</code>，则所有能用<code>grep</code>正则表达式匹配的结果都会显示。一般用精确匹配即可</p></li>
-<li><p><code>spell_error_max</code> 为所允许的最大的错误拼写的字母数量</p></li>
+<li><p><code>spell_error_max</code>
+为所允许的最大的错误拼写的字母数量</p></li>
 </ul>
 <p><code>status</code>函数对输入的物种名大小写不敏感，物种名的前后以及中间允许有多个空格，species可以包括或者不包括命名人（变型f.之前的命名人除外）</p>
 <p>示例：</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">library</span>(plantlist)</span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#### 查询一个名称</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="kw">status</span>(<span class="st">&quot;Myrica rubra&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plantlist)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">#### 查询一个名称</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span>(<span class="st">&quot;Myrica rubra&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;1 name(s) to process.&quot;</code></pre>
 <pre><code>##   SCIENTIFIC_NAME                  AUTHOR   STATUS     FAMILY ACCEPTED_SPECIES
 ## 1    Myrica rubra (Lour.) Siebold &amp; Zucc. Accepted Myricaceae     Myrica rubra
 ##           ACCEPTED_AUTHOR
 ## 1 (Lour.) Siebold &amp; Zucc.</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#### 查询多个名称</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">status</span>(<span class="kw">c</span>(<span class="st">&quot;Myrica rubra&quot;</span>, </span>
-<span id="cb14-3"><a href="#cb14-3"></a>         <span class="st">&quot;Adinandra millettii&quot;</span>,</span>
-<span id="cb14-4"><a href="#cb14-4"></a>         <span class="st">&quot;Machilus thunbergii&quot;</span>,</span>
-<span id="cb14-5"><a href="#cb14-5"></a>         <span class="st">&quot;Ranunculus japonicus&quot;</span>,</span>
-<span id="cb14-6"><a href="#cb14-6"></a>         <span class="st">&quot;Cyclobalanopsis neglecta&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### 查询多个名称</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span>(<span class="fu">c</span>(<span class="st">&quot;Myrica rubra&quot;</span>, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Adinandra millettii&quot;</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Machilus thunbergii&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Ranunculus japonicus&quot;</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Cyclobalanopsis neglecta&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;5 name(s) to process.&quot;</code></pre>
 <pre><code>##            SCIENTIFIC_NAME                  AUTHOR   STATUS        FAMILY
 ## 1             Myrica rubra (Lour.) Siebold &amp; Zucc. Accepted    Myricaceae
@@ -459,163 +496,42 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 3  Machilus thunbergii         Siebold &amp; Zucc.
 ## 4 Ranunculus japonicus                  Thunb.
 ## 5 Quercus myrsinifolia                   Blume</code></pre>
-<p><strong>重要提示：</strong> 由于表示变型的 f. 有时也用于命名人中，因此，用<code>status</code>函数在查询变型时， 请勿为种添加命名人，但是变型的命名人可以提供或者不提供，具体为:</p>
+<p><strong>重要提示：</strong> 由于表示变型的
+f. 有时也用于命名人中，因此，用<code>status</code>函数在查询变型时，
+请勿为种添加命名人，但是变型的命名人可以提供或者不提供，具体为:</p>
 <pre><code>&quot;Hypoxis hirsuta (L.)Coville f. vollosissima Fernald&quot;#  （不能处理）
 &quot;Hypoxis hirsuta f. vollosissima Fernald&quot;#（能处理）
 &quot;Hypoxis hirsuta f. vollosissima&quot;#（能处理）</code></pre>
 </div>
 <div id="ctpl-用中文名查询科属分布海拔iucn等级数据" class="section level2">
-<h2><code>CTPL()</code> :用中文名查询科、属、分布、海拔、IUCN等级数据</h2>
-<p>调用方式： <code>CTPL(taxa = NULL, print_as_list = TRUE)</code></p>
-<p>其中，<code>taxa</code>是植物的中文名向量， <code>print_as_list</code> 只是打印方式的选项，如果为TRUE， 则用列表的方式打印。</p>
+<h2><code>CTPL()</code>
+:用中文名查询科、属、分布、海拔、IUCN等级数据</h2>
+<p>调用方式： <code>CTPL(taxa = NULL)</code></p>
+<p>其中，<code>taxa</code>是植物的中文名向量，
+<code>print_as_list</code> 只是打印方式的选项，如果为TRUE，
+则用列表的方式打印。</p>
 <p><strong>注意</strong>：</p>
 <ul>
 <li><p>由于涉及中文输入和输出，需要在Rstudio中操作</p></li>
-<li><p>本函数返回值为data.frame, <code>print_as_list</code>参数并不改变返回值的数据类型</p></li>
+<li><p>本函数返回值为data.frame,
+<code>print_as_list</code>参数并不改变返回值的数据类型</p></li>
 </ul>
-<p>示例：</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">library</span>(plantlist)</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="kw">CTPL</span>(<span class="kw">c</span>(<span class="st">&quot;杨梅&quot;</span>, <span class="st">&quot;多花泡花树&quot;</span>))</span></code></pre></div>
-<pre><code>## YOUR_SEARCH :
-## [1] &quot;杨梅&quot;       &quot;多花泡花树&quot;
-## 
-## SPECIES_CN :
-## [1] &quot;杨梅&quot;       &quot;多花泡花树&quot;
-## 
-## SPECIES :
-## [1] &quot;Myrica rubra&quot;       &quot;Meliosma myriantha&quot;
-## 
-## SPECIES_FULL :
-## [1] &quot;Myrica rubra (Lour.) S. et Zucc.&quot;  &quot;Meliosma myriantha Sieb. et Zucc.&quot;
-## 
-## GENUS :
-## [1] &quot;Myrica&quot;   &quot;Meliosma&quot;
-## 
-## GENUS_AUTHOR :
-## [1] &quot;L.&quot;    &quot;Blume&quot;
-## 
-## GENUS_CN :
-## [1] &quot;香杨梅属&quot; &quot;泡花树属&quot;
-## 
-## FAMILY :
-## [1] &quot;Myricaceae&quot; &quot;Sabiaceae&quot; 
-## 
-## FAMILY_CN :
-## [1] &quot;杨梅科&quot;   &quot;清风藤科&quot;
-## 
-## FAMILY_NUMBER :
-## [1] &quot;APGIII_158&quot; &quot;APGIII_115&quot;
-## 
-## ORDER :
-## [1] &quot;Fagales&quot;  &quot;Sabiales&quot;
-## 
-## GROUP :
-## [1] &quot;Angiosperms&quot; &quot;Angiosperms&quot;
-## 
-## IUCN_CHINA :
-## [1] &quot;无危（LC）&quot; &quot;无危（LC）&quot;
-## 
-## ENDEMIC_TO_CHINA :
-## [1] &quot;否&quot; &quot;否&quot;
-## 
-## PROVINTIAL_DISTRIBUTION :
-## [1] &quot;苏、浙、赣、湘、川、黔、闽、台、粤、桂、滇、琼&quot;
-## [2] &quot;鲁、苏&quot;                                        
-## 
-## ALTITUDE :
-## [1] &quot;100-1500&quot; &quot;600以下&quot;</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 纯文本文件的读写</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="kw">writeLines</span>(<span class="dt">text =</span> <span class="kw">c</span>(<span class="st">&quot;桃儿七&quot;</span>, </span>
-<span id="cb20-3"><a href="#cb20-3"></a>                    <span class="st">&quot;连香树&quot;</span>, </span>
-<span id="cb20-4"><a href="#cb20-4"></a>                    <span class="st">&quot;水青树&quot;</span>, </span>
-<span id="cb20-5"><a href="#cb20-5"></a>                    <span class="st">&quot;绿樟&quot;</span>, </span>
-<span id="cb20-6"><a href="#cb20-6"></a>                    <span class="st">&quot;网脉实蕨&quot;</span>, <span class="st">&quot;Magnolia coco&quot;</span>, <span class="st">&quot;Punica&quot;</span>), </span>
-<span id="cb20-7"><a href="#cb20-7"></a>    <span class="dt">con =</span> <span class="st">&quot;test_species.txt&quot;</span>, <span class="dt">useBytes =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb20-8"><a href="#cb20-8"></a>sp &lt;-<span class="st"> </span><span class="kw">readLines</span>(<span class="st">&quot;test_species.txt&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb20-9"><a href="#cb20-9"></a>res_CTPL &lt;-<span class="st"> </span><span class="kw">CTPL</span>(sp)</span></code></pre></div>
-<pre><code>## Note: too many rows, only the first few were printedYOUR_SEARCH :
-## [1] &quot;桃儿七&quot;        &quot;连香树&quot;        &quot;水青树&quot;        &quot;绿樟&quot;         
-## [5] &quot;网脉实蕨&quot;      &quot;Magnolia coco&quot;
-## 
-## SPECIES_CN :
-## [1] &quot;桃儿七&quot;   &quot;连香树&quot;   &quot;水青树&quot;   NA         &quot;网脉实蕨&quot; &quot;夜香木兰&quot;
-## 
-## SPECIES :
-## [1] &quot;Sinopodophyllum hexandrum&quot; &quot;Cercidiphyllum japonicum&quot; 
-## [3] &quot;Tetracentron sinense&quot;      NA                         
-## [5] &quot;Bolbitis ×laxireticulata&quot;  &quot;Magnolia coco&quot;            
-## 
-## SPECIES_FULL :
-## [1] &quot;Sinopodophyllum hexandrum (Royle) Ying&quot; 
-## [2] &quot;Cercidiphyllum japonicum Sieb. et Zucc.&quot;
-## [3] &quot;&quot;                                       
-## [4] NA                                       
-## [5] &quot;&quot;                                       
-## [6] &quot;Magnolia coco (Lour.) DC.&quot;              
-## 
-## GENUS :
-## [1] &quot;Sinopodophyllum&quot; &quot;Cercidiphyllum&quot;  &quot;Tetracentron&quot;    NA               
-## [5] &quot;Bolbitis&quot;        &quot;Magnolia&quot;       
-## 
-## GENUS_AUTHOR :
-## [1] &quot;T. S. Ying&quot;      &quot;Siebold &amp; Zucc.&quot; &quot;Oliv.&quot;           NA               
-## [5] &quot;Schott&quot;          &quot;L.&quot;             
-## 
-## GENUS_CN :
-## [1] &quot;桃儿七属&quot;   &quot;连香树属&quot;   &quot;水青树属&quot;   NA           &quot;实蕨属&quot;    
-## [6] &quot;北美木兰属&quot;
-## 
-## FAMILY :
-## [1] &quot;Berberidaceae&quot;     &quot;Cercidiphyllaceae&quot; &quot;Trochodendraceae&quot; 
-## [4] NA                  &quot;Dryopteridaceae&quot;   &quot;Magnoliaceae&quot;     
-## 
-## FAMILY_CN :
-## [1] &quot;小檗科&quot;   &quot;连香树科&quot; &quot;昆栏树科&quot; NA         &quot;鳞毛蕨科&quot; &quot;木兰科&quot;  
-## 
-## FAMILY_NUMBER :
-## [1] &quot;APGIII_113&quot; &quot;APGIII_129&quot; &quot;APGIII_119&quot; NA           &quot;fern_42&quot;   
-## [6] &quot;APGIII_017&quot;
-## 
-## ORDER :
-## [1] &quot;Ranunculales&quot;    &quot;Saxifragales&quot;    &quot;Trochodendrales&quot; NA               
-## [5] &quot;Polypodiales&quot;    &quot;Magnoliales&quot;    
-## 
-## GROUP :
-## [1] &quot;Angiosperms&quot;          &quot;Angiosperms&quot;          &quot;Angiosperms&quot;         
-## [4] NA                     &quot;Ferns and lycophytes&quot; &quot;Angiosperms&quot;         
-## 
-## IUCN_CHINA :
-## [1] &quot;无危（LC）&quot;     &quot;无危（LC）&quot;     &quot;无危（LC）&quot;     NA              
-## [5] &quot;数据缺乏（DD）&quot; &quot;濒危（EN）&quot;    
-## 
-## ENDEMIC_TO_CHINA :
-## [1] &quot;否&quot; &quot;否&quot; &quot;否&quot; NA   &quot;否&quot; &quot;否&quot;
-## 
-## PROVINTIAL_DISTRIBUTION :
-## [1] &quot;陕、甘、青、川、滇、藏&quot;                        
-## [2] &quot;晋、豫、陕、甘、皖、浙、赣、湘、鄂、川、黔、滇&quot;
-## [3] &quot;甘、黔、豫、湘、鄂、陕、川、藏、滇&quot;            
-## [4] NA                                              
-## [5] &quot;&quot;                                              
-## [6] &quot;浙、闽、台、粤、桂、滇&quot;                        
-## 
-## ALTITUDE :
-## [1] &quot;2200-4300&quot; &quot;600-2700&quot;  &quot;&quot;          NA          &quot;&quot;          &quot;&quot;</code></pre>
 </div>
 <div id="count_taxa-统计ctpl结果的科属种数量" class="section level2">
 <h2><code>count_taxa()</code> :统计CTPL结果的科、属、种数量</h2>
 <p>调用方式： <code>count_taxa(checklist_dat)</code></p>
-<p><code>checklist_dat</code> 为<code>CTPL()</code>函数返回的结果，<code>CTPL</code>结果中没有信息的行，将会被忽略。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">library</span>(plantlist)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>res_CTPL &lt;-<span class="st"> </span><span class="kw">CTPL</span>(<span class="kw">c</span>(<span class="st">&quot;桃儿七&quot;</span>, </span>
-<span id="cb22-3"><a href="#cb22-3"></a>                   <span class="st">&quot;连香树&quot;</span>, </span>
-<span id="cb22-4"><a href="#cb22-4"></a>                   <span class="st">&quot;水青树&quot;</span>, </span>
-<span id="cb22-5"><a href="#cb22-5"></a>                   <span class="st">&quot;绿樟&quot;</span>, </span>
-<span id="cb22-6"><a href="#cb22-6"></a>                   <span class="st">&quot;网脉实蕨&quot;</span>, </span>
-<span id="cb22-7"><a href="#cb22-7"></a>                   <span class="st">&quot;Magnolia coco&quot;</span>, </span>
-<span id="cb22-8"><a href="#cb22-8"></a>                   <span class="st">&quot;Punica&quot;</span>), <span class="dt">print_as_list =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb22-9"><a href="#cb22-9"></a><span class="kw">count_taxa</span>(res_CTPL)</span></code></pre></div>
-<pre><code>## Warning in count_taxa(res_CTPL): Taxa &#39;绿樟, Punica&#39; does not have full scientific name, ignored</code></pre>
+<p><code>checklist_dat</code>
+为<code>CTPL()</code>函数返回的结果，<code>CTPL</code>结果中没有信息的行，将会被忽略。</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plantlist)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>res_CTPL <span class="ot">&lt;-</span> <span class="fu">CTPL</span>(<span class="fu">c</span>(<span class="st">&quot;桃儿七&quot;</span>, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;连香树&quot;</span>, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;水青树&quot;</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;绿樟&quot;</span>, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;网脉实蕨&quot;</span>, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Magnolia coco&quot;</span>, </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Punica&quot;</span>))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">count_taxa</span>(res_CTPL)</span></code></pre></div>
+<pre><code>## Warning in count_taxa(res_CTPL): Taxa: &#39;绿樟, Punica&#39; do(es) not have full scientific name, ignored</code></pre>
 <pre><code>## $NO_OF_FAMILIES
 ## [1] 5
 ## 
@@ -665,45 +581,52 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 5    Tetracentron             1</code></pre>
 </div>
 <div id="make_checklist-制作markdown格式的植物名录-按照系统发育顺序排列" class="section level2">
-<h2><code>make_checklist()</code> :制作markdown格式的植物名录 （按照系统发育顺序排列）</h2>
+<h2><code>make_checklist()</code> :制作markdown格式的植物名录
+（按照系统发育顺序排列）</h2>
 <p>调用：</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">make_checklist</span>(<span class="dt">checklist_dat =</span> <span class="ot">NULL</span>, </span>
-<span id="cb25-2"><a href="#cb25-2"></a>                <span class="dt">outfile =</span> <span class="st">&quot;output_make_checklist.md&quot;</span>, </span>
-<span id="cb25-3"><a href="#cb25-3"></a>                <span class="dt">theme =</span> <span class="kw">c</span>(<span class="st">&quot;complex&quot;</span>, <span class="st">&quot;simple&quot;</span>, <span class="st">&quot;minimal&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_checklist</span>(<span class="at">checklist_dat =</span> <span class="cn">NULL</span>, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">outfile =</span> <span class="st">&quot;output_make_checklist.md&quot;</span>, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">theme =</span> <span class="fu">c</span>(<span class="st">&quot;complex&quot;</span>, <span class="st">&quot;simple&quot;</span>, <span class="st">&quot;minimal&quot;</span>))</span></code></pre></div>
 <p>参数：</p>
 <ul>
 <li><p><code>checklist_dat = NULL</code>: 为CTPL函数返回的结果</p></li>
 <li><p><code>outfile</code>: 为输出的markdown文件的名称</p></li>
 <li><p><code>theme</code>: 有三种风格可选，其中</p>
 <ul>
-<li><code>complex</code>: 输出的资料最详实，包括IUCN等级、海拔、省级分布等</li>
+<li><code>complex</code>:
+输出的资料最详实，包括IUCN等级、海拔、省级分布等</li>
 <li><code>simple</code> : 包括物种名和引证的标本</li>
 <li><code>minimal</code>: 只显示物种的中文名和完整学名</li>
 </ul></li>
 </ul>
 <p>关于分类单元的排列顺序：在大类群上按照苔藓、蕨类、裸子植物、被子植物的顺序；每个类群下，按照科的顺序号；科以下，属按照字母排列；属下各种按照分类单元的拉丁名排列。如有提供标本引证，则在CTPL返回的数据框上添加名为<code>SPECIMENS</code>的列即可。</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">library</span>(plantlist)</span>
-<span id="cb26-2"><a href="#cb26-2"></a>res_CTPL &lt;-<span class="st"> </span><span class="kw">CTPL</span>(<span class="kw">c</span>(<span class="st">&quot;桃儿七&quot;</span>, </span>
-<span id="cb26-3"><a href="#cb26-3"></a>                   <span class="st">&quot;连香树&quot;</span>, </span>
-<span id="cb26-4"><a href="#cb26-4"></a>                   <span class="st">&quot;水青树&quot;</span>, </span>
-<span id="cb26-5"><a href="#cb26-5"></a>                   <span class="st">&quot;绿樟&quot;</span>, </span>
-<span id="cb26-6"><a href="#cb26-6"></a>                   <span class="st">&quot;网脉实蕨&quot;</span>, </span>
-<span id="cb26-7"><a href="#cb26-7"></a>                   <span class="st">&quot;Magnolia coco&quot;</span>, </span>
-<span id="cb26-8"><a href="#cb26-8"></a>                   <span class="st">&quot;Punica&quot;</span>), <span class="dt">print_as_list =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb26-9"><a href="#cb26-9"></a><span class="kw">make_checklist</span>(res_CTPL)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plantlist)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>res_CTPL <span class="ot">&lt;-</span> <span class="fu">CTPL</span>(<span class="fu">c</span>(<span class="st">&quot;桃儿七&quot;</span>, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;连香树&quot;</span>, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;水青树&quot;</span>, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;绿樟&quot;</span>, </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;网脉实蕨&quot;</span>, </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Magnolia coco&quot;</span>, </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Punica&quot;</span>))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">make_checklist</span>(res_CTPL)</span></code></pre></div>
 </div>
 </div>
 <div id="引用" class="section level1">
 <h1>引用</h1>
 <p>如果您使用了plantlist程序包，请通过以下方式引用（请根据版本和日期做相应修改）：</p>
 <ul>
-<li>Jinlong Zhang (2020). plantlist: Looking Up the Status of Plant Scientific Names based on The Plant List Database. R package version 0.6.5. <a href="https://github.com/helixcn/plantlist/" class="uri">https://github.com/helixcn/plantlist/</a></li>
+<li>Jinlong Zhang (2020). plantlist: Looking Up the Status of Plant
+Scientific Names based on The Plant List Database. R package version
+0.6.5. <a href="https://github.com/helixcn/plantlist/" class="uri">https://github.com/helixcn/plantlist/</a></li>
 </ul>
 </div>
 <div id="致谢" class="section level1">
 <h1>致谢</h1>
-<p>编写本程序包最早是2014年1月在中国科学院昆明植物研究所的《生态和进化中的现代统计：基于R语言的应用》（ <a href="http://blog.sciencenet.cn/blog-255662-793234.html" class="uri">http://blog.sciencenet.cn/blog-255662-793234.html</a> ）课程时开始的。特别感谢杨雪飞老师的邀请以及多位老师同学共同讨论。</p>
-<p>本程序包苔藓植物各科属的中文名由中国科学院植物研究所刘冰博士提供。 Plantlist 1.1 数据库来源于汪远分享的数据。</p>
+<p>编写本程序包最早是2014年1月在中国科学院昆明植物研究所的《生态和进化中的现代统计：基于R语言的应用》（
+<a href="http://blog.sciencenet.cn/blog-255662-793234.html" class="uri">http://blog.sciencenet.cn/blog-255662-793234.html</a>
+）课程时开始的。特别感谢杨雪飞老师的邀请以及多位老师同学共同讨论。</p>
+<p>本程序包苔藓植物各科属的中文名由中国科学院植物研究所刘冰博士提供。
+Plantlist 1.1 数据库来源于汪远分享的数据。</p>
 <p>感谢高芳銮、李嵘、张健、朱慧玲、刘冰、胡晓丽、冯嘉恩、黄世芳、俞筱押、胡海花、李家湘、刘水银、鲍志贵、张美霞、葛斌杰、孔德良、刘振稳、龙文兴、金建军、夏尚文、李霞、陶旺兰、李秋萍、易逸瑜、张璋、骆争荣、彭舜磊、郭文永、贾蕙君等各位老师同学提出宝贵意见和建议。</p>
 </div>
 <div id="参考文献" class="section level1">
@@ -711,10 +634,18 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <ul>
 <li><p>数据来源 <a href="https://github.com/helixcn/plantlist_data" class="uri">https://github.com/helixcn/plantlist_data</a> 。</p></li>
 <li><p>多识团队. (2016至今). 多识植物百科. <a href="http://duocet.ibiodiversity.net/" class="uri">http://duocet.ibiodiversity.net/</a>.</p></li>
-<li><p>刘冰, 叶建飞, 刘夙, 汪远, 杨永, 赖阳均, 曾刚，林秦文. (2015). 中国被子植物科属概览: 依据 APG III 系统. 生物多样性, 23(2), 225-231.</p></li>
-<li><p>环境保护部, 中国科学院. (2013) 《中国生物多样性红色名录——高等植物卷 》 电子版来源： www.mep.gov.cn/gkml/hbb/bgg/201309/W020130917614244055331.pdf</p></li>
-<li><p>Christenhusz, M., Zhang, X. C., and Schneider, H. (2011a). A linear sequence of extant families and genera of lycophytes and ferns. Phytotaxa. 19:7-54</p></li>
-<li><p>Christenhusz, M., Reveal, J., Farjon, A., Gardner, M. F., Mill, R. R., and Chase, M. W. (2011b). A new classification and linear sequence of extant gymnosperms. Phytotaxa. 19:55-70</p></li>
+<li><p>刘冰, 叶建飞, 刘夙, 汪远, 杨永, 赖阳均, 曾刚，林秦文. (2015).
+中国被子植物科属概览: 依据 APG III 系统. 生物多样性, 23(2),
+225-231.</p></li>
+<li><p>环境保护部, 中国科学院. (2013)
+《中国生物多样性红色名录——高等植物卷 》 电子版来源：
+www.mep.gov.cn/gkml/hbb/bgg/201309/W020130917614244055331.pdf</p></li>
+<li><p>Christenhusz, M., Zhang, X. C., and Schneider, H. (2011a). A
+linear sequence of extant families and genera of lycophytes and ferns.
+Phytotaxa. 19:7-54</p></li>
+<li><p>Christenhusz, M., Reveal, J., Farjon, A., Gardner, M. F., Mill,
+R. R., and Chase, M. W. (2011b). A new classification and linear
+sequence of extant gymnosperms. Phytotaxa. 19:55-70</p></li>
 </ul>
 </div>
 

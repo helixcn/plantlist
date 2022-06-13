@@ -165,7 +165,7 @@ status(c("Myrica rubra",
 ## `CTPL()` :用中文名查询科、属、分布、海拔、IUCN等级数据
 
 调用方式：
-`CTPL(taxa = NULL, print_as_list = TRUE)`
+`CTPL(taxa = NULL)`
 
 其中，`taxa`是植物的中文名向量， `print_as_list` 只是打印方式的选项，如果为TRUE， 则用列表的方式打印。
 
@@ -190,7 +190,7 @@ res_CTPL <- CTPL(c("桃儿七",
                    "绿樟", 
                    "网脉实蕨", 
                    "Magnolia coco", 
-                   "Punica"), print_as_list = FALSE)
+                   "Punica"))
 count_taxa(res_CTPL)
 ```
 
@@ -224,7 +224,7 @@ res_CTPL <- CTPL(c("桃儿七",
                    "绿樟", 
                    "网脉实蕨", 
                    "Magnolia coco", 
-                   "Punica"), print_as_list = FALSE)
+                   "Punica"))
 make_checklist(res_CTPL)
 ```
 

@@ -1,11 +1,52 @@
-CTPL <- function(taxa = NULL,
-                 print_as_list = TRUE) {
+#' Search Families Based on Scientific or Chinese Names of Plants
+#' 
+#' This function prepare checklist of plants with scientific name, Kew Family
+#' and APGIII family based on Chinese Names specified in an text file.
+#' 
+#' A vector of character strings containing the Chinese Names to look up.
+#' 
+#' @param taxa Character vector of the species names (Chinese Characters).
+#' @return A data frame containing the following columns:
+#' 
+#' \item{TAXA_NAME}{Chinese Name of the taxa}
+#' 
+#' \item{SPECIES}{Scientific name without authorship}
+#' 
+#' \item{SPECIES_FULL}{Scientific name}
+#' 
+#' \item{GENUS}{Genus}
+#' 
+#' \item{GENUS_CN}{Genus in Chinese}
+#' 
+#' \item{FAMILY_APGIII}{The family in APGIII classification systems}
+#' 
+#' \item{FAMILY_CN}{The family name in Chinese}
+#' 
+#' \item{GROUP}{The group of vascular plants}
+#' 
+#' \item{IUCN_CHINA}{The IUCN status published in 2014.}
+#' 
+#' \item{ENDEMIC_TO_CHINA}{Logical, Is the taxa endemic to China}
+#' 
+#' \item{PROVINTIAL_DISTRIBUTION}{Provinces in which the taxa is naturally
+#' occurred}
+#' 
+#' \item{ALTITUDE}{Altitudinal range in meters}
+#' @author Jinlong Zhang \email{ jinlongzhang01@@gmail.com }
+#' @references The Plant List Website.
+#' @examples
+#' 
+#' # Do not Run
+#' # see the vignettes
+#' 
+#' @export CTPL
+CTPL <- function(taxa = NULL) {
   options(stringsAsFactors = FALSE)
-  if (length(taxa) == 1) {
-    if (any(unique(taxa) == "")) {
-      stop("taxa is empty, please provide provide scientific or Chinese name(s)")
+    if (length(taxa) == 1) {
+        if (any(unique(taxa) == "")) {
+            stop("taxa is empty, please provide scientific or Chinese name(s)")
+        }
     }
-  }
   if (any(taxa == "" | is.null(taxa))) {
     stop("At least one taxa is empty, can not search")
   }
@@ -93,13 +134,5 @@ CTPL <- function(taxa = NULL,
   res1 <- res0[2:nrow(res0), ]
   res <- data.frame(YOUR_SEARCH = rep(taxa, rep_id), res1)
   row.names(res) <- 1:nrow(res)
-  if (print_as_list) {
-    if (nrow(res) > 6) {
-      cat("Note: too many rows to show, only the first six rows are shown.\n\n")
-    }
-    print.listof(head(res)) # Only the first few species will be printed
-    return(invisible(res))
-  } else {
-    return(res)
-  }
+  return(res)
 }

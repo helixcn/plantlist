@@ -1,9 +1,9 @@
 Package: plantlist
 Type: Package
 Title: Looking Up the Status of Plant Scientific Names based on The
-        Plant List Database, Search the Chinese Names and Making checklists of plants
-Version: 0.7.2
-Date: 2021-04-07
+        Plant List Database, Searching the Chinese Names and Making checklists of plants
+Version: 0.8.0
+Date: 2022-06-13
 Authors@R: c(person("Jinlong", "Zhang", role = c("aut", "cre"), email = "jinlongzhang01@gmail.com"),
                person("Bing", "Liu", role = "aut", email = "liubing@ibcas.ac.cn"),
                person("Su", "Liu", role = "aut"),
@@ -26,3 +26,6 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 7.2.0
+Imports: 
+    stats
