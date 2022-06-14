@@ -10,10 +10,10 @@ Authors@R: c(person("Jinlong", "Zhang", role = c("aut", "cre"), email = "jinlong
                person("Zhenhao", "Feng", role = "aut"),
                person("Kaiwen", "Jiang", role = "aut"))
 Author: Jinlong Zhang [aut, cre],
-  Bing Liu[aut],
-  Su Liu[aut],
-  Zhenhao Feng[aut],
-  Kaiwen Jiang[aut]
+  Bing Liu [aut],
+  Su Liu [aut],
+  Zhenhao Feng [aut],
+  Kaiwen Jiang [aut]
 Description: Miscellaneous functions for looking up systematic position (Family, Order, Family Number) for higher plants, compiling check list, counting the number taxa under each category based on a curated database.
 License: GPL-2
 Depends: R (>= 3.5.0)
