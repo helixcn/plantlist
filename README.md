@@ -70,7 +70,7 @@ Please feel free to send an email to the package maintainer **Jinlong Zhang** if
 
 From 0.7.2 onwards, the plantlist package uses a database of Chinese Names compiled by Dr. **LIU Bing** (Institute of Botany, Chinese Academy of Sciences), Dr. **LIU Su** (The Shanghai Chenshan Botanical Garden), Mr. **FENG Zhenhao** and Mr. **JIANG Kaiwen** (Southwest Forestry University) *et al.*. The maintainer would like to thank the authors for allowing the usage of their database. Any bugs/errors in the R functions, help files (Rd files) or the vignettes are the responsibility of the package maintainer, not the author of the database.
 
-For more information, please refer to http://duocet.ibiodiversity.net/
+For more information, please refer to https://duocet.botanicalgarden.cn:8888/index.php?title=%E9%A6%96%E9%A1%B5 
 
 If you use `plantlist` in your study, please cite it:
 
